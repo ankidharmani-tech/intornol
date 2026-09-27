@@ -112,10 +112,7 @@ export default function Sidebar({
                     onClick={() => setIsOngoingOpen(!isOngoingOpen)}
                     className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                      <span>Ongoing</span>
-                    </div>
+                    <span>Ongoing</span>
                     <div className="flex items-center gap-1">
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-mono">
                         {ongoingCount}
@@ -155,10 +152,7 @@ export default function Sidebar({
                     onClick={() => setIsUpcomingOpen(!isUpcomingOpen)}
                     className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                      <span>Upcoming</span>
-                    </div>
+                    <span>Upcoming</span>
                     <div className="flex items-center gap-1">
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-mono">
                         {upcomingCount}
@@ -198,10 +192,7 @@ export default function Sidebar({
                     onClick={() => setIsCompletedOpen(!isCompletedOpen)}
                     className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                      <span>Completed</span>
-                    </div>
+                    <span>Completed</span>
                     <div className="flex items-center gap-1">
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
                         {completedCount}
