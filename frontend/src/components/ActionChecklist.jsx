@@ -51,19 +51,19 @@ export default function ActionChecklist({ onInspectDocument }) {
   return (
     <div className="space-y-6">
       {/* Physical Desk Checklist Card */}
-      <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card">
+      <div className="card-3d rounded-2xl p-5">
         {/* Header with counter */}
         <div className="flex items-center justify-between gap-2 mb-2">
           <h3 className="text-sm font-bold text-slate-900 tracking-tight flex items-center gap-1.5">
             <span className="text-terracotta">≈</span>
             <span>Physical Desk Checklist</span>
           </h3>
-          <span className="text-[10px] font-bold text-terracotta bg-[#fceee9] px-2 py-0.5 rounded-full border border-terracotta/20 font-mono">
+          <span className="text-[10px] font-bold text-terracotta bg-[#fceee9] px-2.5 py-0.5 rounded-full border border-terracotta/20 font-mono shadow-sm">
             {completedCount} of {items.length} Ready
           </span>
         </div>
 
-        <p className="text-[11px] text-slate-400 mb-4 leading-snug">
+        <p className="text-[11px] text-slate-500 mb-4 leading-snug">
           Collect these mandatory physical verification records before reporting to Room 108.
         </p>
 
@@ -75,17 +75,17 @@ export default function ActionChecklist({ onInspectDocument }) {
               <div
                 key={item.id}
                 onClick={() => toggleCheck(item.id)}
-                className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 ${
+                className={`p-3 rounded-xl border transition-all duration-200 cursor-pointer flex items-start gap-3 hover:-translate-y-0.5 hover:shadow-md ${
                   isChecked
-                    ? 'bg-blue-50/40 border-blue-200/80'
-                    : 'bg-white border-slate-200/80 hover:border-slate-300'
+                    ? 'bg-blue-50/50 border-blue-200 shadow-sm'
+                    : 'bg-white border-slate-200/90 shadow-soft-sm hover:border-slate-300'
                 }`}
               >
                 <div
                   className={`mt-0.5 w-4 h-4 rounded flex items-center justify-center shrink-0 transition-all ${
                     isChecked
-                      ? 'bg-blue-600 text-white'
-                      : 'border border-slate-300 bg-white'
+                      ? 'bg-blue-600 text-white shadow-sm scale-105'
+                      : 'border-2 border-slate-300 bg-white'
                   }`}
                 >
                   {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -95,7 +95,7 @@ export default function ActionChecklist({ onInspectDocument }) {
                   <div className="text-xs font-bold text-slate-900 leading-none mb-1">
                     {item.title}
                   </div>
-                  <div className="text-[11px] text-slate-400 font-medium leading-tight">
+                  <div className="text-[11px] text-slate-500 font-medium leading-tight">
                     {item.desc}
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export default function ActionChecklist({ onInspectDocument }) {
         {/* Generate Dossier Button */}
         <button
           onClick={() => onInspectDocument('Generated Physical Dossier Bundle')}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-terracotta hover:bg-terracotta-hover text-white font-bold text-xs rounded-xl shadow-soft-sm transition-all active:scale-[0.98] cursor-pointer"
+          className="btn-3d-terracotta w-full flex items-center justify-center gap-2 py-2.5 px-4 font-bold text-xs rounded-xl cursor-pointer"
         >
           <FileText className="w-3.5 h-3.5" />
           <span>Generate Document Dossier Bundle</span>
@@ -115,7 +115,7 @@ export default function ActionChecklist({ onInspectDocument }) {
       </div>
 
       {/* Right to Public Services Act (MH) Card */}
-      <div className="bg-[#f0f6fa] rounded-2xl p-5 border border-slate-200/80 shadow-soft-sm space-y-2.5">
+      <div className="card-3d-subtle bg-gradient-to-b from-[#f0f6fa] to-white rounded-2xl p-5 border border-slate-200/80 space-y-2.5">
         <div className="flex items-center gap-2">
           <ShieldCheck className="w-4 h-4 text-terracotta" />
           <h4 className="text-xs font-bold text-slate-900">

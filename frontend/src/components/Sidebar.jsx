@@ -69,10 +69,10 @@ export default function Sidebar({
           {/* Dashboard Tab */}
           <button
             onClick={() => setActiveTab('dashboard')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
               activeTab === 'dashboard'
-                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm font-bold scale-[1.01]'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 hover:shadow-sm'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -238,7 +238,10 @@ export default function Sidebar({
             </div>
           </div>
 
-          {/* New Schemes */}
+          {/* NOTE: New Schemes page removed per user request and moved to Header notification bell:
+            "and, remove new schemes page also, and instead make a notification button or something like that, on the top bar, so that when new schemes arrives usr can check there.."
+          */}
+          {/*
           <button
             onClick={() => setActiveTab('newSchemes')}
             className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
@@ -255,54 +258,57 @@ export default function Sidebar({
               New
             </span>
           </button>
+          */}
 
           {/* Admin Queue */}
           <button
             onClick={() => setActiveTab('adminQueue')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
               activeTab === 'adminQueue'
-                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm font-bold scale-[1.01]'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 hover:shadow-sm'
             }`}
           >
             <div className="flex items-center gap-2.5">
               <CheckSquare className={`w-4 h-4 ${activeTab === 'adminQueue' ? 'text-slate-900' : 'text-slate-400'}`} />
               <span>Admin Queue</span>
             </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-700 border-slate-200 font-mono">
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-700 border-slate-200 font-mono shadow-sm">
               {pendingCount}
             </span>
           </button>
 
           {/* NOTE: Document Guide is removed per user request:
             "remove document guide as right now it looks like u have just one task ongoing and thats why u have durect tab for doc guide"
-            {/*
-            <button
-              onClick={() => setActiveTab('documentGuide')}
-              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
-            >
-              ...
-            </button>
-            */}
+          */}
+          {/*
+          <button
+            onClick={() => setActiveTab('documentGuide')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
+          >
+            ...
+          </button>
+          */}
 
           {/* NOTE: Jurisdiction page is commented out per user request:
             "and remove jurisdiction page, means dont remove permanantly, its just that, if we want we will put it, so comment it for now.."
-            {/*
-            <button
-              onClick={() => setActiveTab('jurisdiction')}
-              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
-            >
-              ...
-            </button>
-            */}
+          */}
+          {/*
+          <button
+            onClick={() => setActiveTab('jurisdiction')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
+          >
+            ...
+          </button>
+          */}
 
           {/* Settings */}
           <button
             onClick={() => setActiveTab('settings')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
               activeTab === 'settings'
-                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm font-bold scale-[1.01]'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 hover:shadow-sm'
             }`}
           >
             <div className="flex items-center gap-2.5">
@@ -316,7 +322,7 @@ export default function Sidebar({
       {/* Bottom Section */}
       <div className="space-y-3 pt-3 border-t border-slate-100 shrink-0">
         {/* Daily Report Card */}
-        <div className="bg-[#f0f6fa]/70 rounded-2xl p-3.5 border border-slate-200/80">
+        <div className="card-3d-interactive bg-gradient-to-b from-[#f0f6fa] to-white rounded-2xl p-3.5 border border-slate-200/80">
           <div className="flex items-center justify-between mb-1">
             <span className="text-xs font-bold text-slate-900">Done for day?</span>
             <Clock className="w-3.5 h-3.5 text-terracotta" />
@@ -326,7 +332,7 @@ export default function Sidebar({
           </p>
           <button
             onClick={onOpenDailyReport}
-            className="w-full flex items-center justify-center gap-1.5 py-2 px-3 bg-terracotta hover:bg-terracotta-hover text-white rounded-xl text-xs font-bold transition-all shadow-sm active:scale-[0.98]"
+            className="btn-3d-terracotta w-full flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-bold rounded-xl cursor-pointer"
           >
             <Send className="w-3 h-3 fill-current" />
             <span>Send daily report</span>

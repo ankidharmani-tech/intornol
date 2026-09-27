@@ -14,12 +14,12 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
   if (!isOpen || !documentTitle) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in-up">
+      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 card-3d animate-pop-in overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-xl bg-navy-900 text-white flex items-center justify-center">
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-50 via-amber-50/20 to-slate-50">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-navy-900 text-white flex items-center justify-center shadow-sm">
               <FileText className="w-4 h-4 text-brandYellow" />
             </div>
             <div>
@@ -33,7 +33,7 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
           </div>
           <button
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           >
             <X className="w-4 h-4" />
           </button>
@@ -41,7 +41,7 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
 
         {/* Content */}
         <div className="p-5 space-y-4 text-xs text-slate-600">
-          <div className="p-3.5 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1">
+          <div className="p-3.5 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1 shadow-sm">
             <div className="font-bold text-amber-900 text-xs">Physical Verification Criteria:</div>
             <p className="text-amber-800 leading-relaxed text-[11px]">
               The verifying clerk at the Municipal Ward desk checks for physical watermark, unexpired dates (less than 90 days), and absolute consistency across applicant name spellings.
@@ -66,7 +66,7 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
             </ul>
           </div>
 
-          <div className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-rose-800 space-y-1">
+          <div className="bg-rose-50 border border-rose-200 rounded-xl p-3 text-rose-800 space-y-1 shadow-sm">
             <div className="font-bold text-rose-900 flex items-center gap-1.5">
               <AlertTriangle className="w-4 h-4 text-rose-600" />
               <span>Highest Rejection Reason</span>
@@ -81,7 +81,7 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
         <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold rounded-xl text-xs transition-colors"
+            className="btn-3d-white px-4 py-2 text-xs"
           >
             Close
           </button>
@@ -89,7 +89,7 @@ export default function DocumentPreviewModal({ documentTitle, isOpen, onClose })
             href="https://services.india.gov.in"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 bg-brandYellow hover:bg-brandYellow-hover text-slate-950 font-bold rounded-xl text-xs transition-all shadow-sm"
+            className="btn-3d-terracotta flex items-center gap-1.5 px-4 py-2 text-xs"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download Official Blank Spec</span>

@@ -18,10 +18,10 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 shadow-2xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in-up">
+      <div className="bg-white rounded-3xl max-w-lg w-full border border-slate-200 card-3d animate-pop-in overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div className="p-5 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-50 via-amber-50/20 to-slate-50">
           <div>
             <span className="text-[10px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded uppercase tracking-wider">
               Citizen Desk Dispatch
@@ -32,7 +32,7 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
           </div>
           <button
             onClick={onClose}
-            className="w-7 h-7 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-600 flex items-center justify-center transition-colors"
+            className="w-7 h-7 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-all hover:scale-105 active:scale-95"
           >
             <X className="w-4 h-4" />
           </button>
@@ -42,7 +42,7 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
         <div className="p-5 space-y-4 text-xs">
           {sent ? (
             <div className="p-6 text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-sm">
                 <Check className="w-6 h-6 stroke-[3]" />
               </div>
               <h4 className="text-base font-bold text-slate-900">
@@ -53,14 +53,14 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
               </p>
               <button
                 onClick={onClose}
-                className="mt-3 px-5 py-2 bg-navy-900 hover:bg-navy-800 text-white rounded-xl font-bold text-xs"
+                className="mt-3 btn-3d-slate px-5 py-2 text-xs"
               >
                 Close Window
               </button>
             </div>
           ) : (
             <>
-              <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+              <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2 shadow-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-slate-500">Target Ward Desk:</span>
                   <strong className="text-slate-900">{selectedCity.zone}</strong>
@@ -88,7 +88,7 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
                   <input
                     type="email"
                     defaultValue="ward.officer@thanecity.gov.in"
-                    className="bg-transparent text-xs text-slate-800 w-full focus:outline-none font-mono"
+                    className="bg-transparent text-xs text-slate-800 w-full focus:outline-none"
                   />
                 </div>
               </div>
@@ -97,14 +97,14 @@ export default function DailyReportModal({ isOpen, onClose, selectedCity }) {
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-xs"
+                  className="btn-3d-white px-4 py-2 text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
                   onClick={() => setSent(true)}
-                  className="flex items-center gap-1.5 px-5 py-2.5 bg-brandYellow hover:bg-brandYellow-hover text-slate-950 font-bold rounded-xl text-xs shadow-sm transition-all"
+                  className="btn-3d-terracotta flex items-center gap-1.5 px-5 py-2.5 text-xs"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Confirm & Send Report</span>

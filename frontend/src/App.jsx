@@ -169,9 +169,12 @@ export default function App() {
           )}
           */}
 
+          {/* NOTE: New Schemes page removed per user request and moved to Header notification bell */}
+          {/*
           {activeTab === 'newSchemes' && (
             <NewSchemesView selectedCity={selectedCity} />
           )}
+          */}
 
           {activeTab === 'adminQueue' && (
             <AdminQueueView

@@ -88,4 +88,118 @@
   animation: dropdownItemSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* 3D Tactile Card & Depth Classes */
+.card-3d {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 22px -3px rgba(15, 23, 42, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.card-3d-interactive {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 8px 20px -3px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-3d-interactive:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 18px 36px -4px rgba(15, 23, 42, 0.13), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(203, 213, 225, 1);
+}
+
+.card-3d-subtle {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02), 0 4px 12px -2px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-3d-subtle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04), 0 10px 22px -3px rgba(15, 23, 42, 0.10);
+  border-color: rgba(203, 213, 225, 1);
+}
+
+/* 3D Tactile Buttons */
+.btn-3d-terracotta {
+  background-color: #964B34;
+  color: #ffffff;
+  box-shadow: 0 3px 0 #6e3221, 0 6px 14px rgba(150, 75, 52, 0.25);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-terracotta:hover {
+  background-color: #823D28;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #6e3221, 0 10px 20px rgba(150, 75, 52, 0.35);
+}
+
+.btn-3d-terracotta:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #6e3221, 0 3px 6px rgba(150, 75, 52, 0.2);
+}
+
+.btn-3d-white {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 0 #cbd5e1, 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-white:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #94a3b8, 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.btn-3d-white:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #cbd5e1, 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.btn-3d-slate {
+  background-color: #1e293b;
+  color: #ffffff;
+  box-shadow: 0 3px 0 #0f172a, 0 6px 14px rgba(15, 23, 42, 0.25);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-slate:hover {
+  background-color: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #020617, 0 10px 20px rgba(15, 23, 42, 0.35);
+}
+
+.btn-3d-slate:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #020617, 0 3px 6px rgba(15, 23, 42, 0.2);
+}
+
+.btn-3d-blue {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 3px 0 #1d4ed8, 0 6px 14px rgba(37, 99, 235, 0.28);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-3d-blue:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #1e40af, 0 10px 20px rgba(37, 99, 235, 0.38);
+}
+
+.btn-3d-blue:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #1e40af, 0 3px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* Stagger entrance delays */
+.stagger-1 { animation-delay: 60ms; }
+.stagger-2 { animation-delay: 120ms; }
+.stagger-3 { animation-delay: 180ms; }
+.stagger-4 { animation-delay: 240ms; }
+.stagger-5 { animation-delay: 300ms; }
+
 

@@ -75,9 +75,9 @@ export default function AdminQueueView({ onApproveItem }) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-12 animate-fade-in-up">
       {/* Top Banner */}
-      <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+      <div className="card-3d rounded-2xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold text-slate-500">
@@ -89,14 +89,14 @@ export default function AdminQueueView({ onApproveItem }) {
             <button
               onClick={handleRescan}
               disabled={isCrawling}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl border border-slate-200 transition-colors shadow-soft-sm"
+              className="btn-3d-white flex items-center gap-1.5 px-3 py-1.5 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer"
             >
               <RefreshCw className={`w-3.5 h-3.5 text-slate-500 ${isCrawling ? 'animate-spin' : ''}`} />
               <span>{isCrawling ? 'Crawling...' : 'Rescan Crawlers'}</span>
             </button>
             <button
               onClick={() => handleAction('Batch approved 3 high confidence nodes to Neo4j.')}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold rounded-xl shadow-soft-sm transition-all"
+              className="btn-3d-terracotta flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-xl cursor-pointer"
             >
               <Check className="w-3.5 h-3.5 stroke-[3]" />
               <span>Batch Approve High Confidence (&gt;90%)</span>
@@ -113,39 +113,39 @@ export default function AdminQueueView({ onApproveItem }) {
 
         {/* 4 Metric Summary Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-              PENDING REVIEW
+          <div className="card-3d-interactive p-3.5 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[11px] font-semibold text-slate-500">
+              Pending Review
             </div>
             <div className="text-xl font-bold text-slate-900 mt-0.5">14</div>
             <div className="text-[10px] text-slate-500 mt-1">Requires schema & touchpoint sign-off</div>
           </div>
 
-          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-              COMMITTED NODES
+          <div className="card-3d-interactive p-3.5 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[11px] font-semibold text-slate-500">
+              Committed Nodes
             </div>
             <div className="text-xl font-bold text-slate-900 mt-0.5 flex items-center gap-1.5">
               <span>182</span>
-              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1 rounded">+11 today</span>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-200">+11 today</span>
             </div>
             <div className="text-[10px] text-slate-500 mt-1">Live deterministic nodes in graph</div>
           </div>
 
-          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-              PARSER ACCURACY
+          <div className="card-3d-interactive p-3.5 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[11px] font-semibold text-slate-500">
+              Parser Accuracy
             </div>
             <div className="text-xl font-bold text-slate-900 mt-0.5 flex items-center gap-1.5">
               <span>98.4%</span>
-              <span className="text-[9px] text-slate-400 font-mono">LLM Benchmark</span>
+              <span className="text-[10px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded-full border border-blue-200">LLM Benchmark</span>
             </div>
             <div className="text-[10px] text-slate-500 mt-1">Synthesized confidence on regulatory text</div>
           </div>
 
-          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
-            <div className="text-[9px] font-bold text-slate-400 uppercase tracking-wider font-mono">
-              PORTALS MONITORED
+          <div className="card-3d-interactive p-3.5 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[11px] font-semibold text-slate-500">
+              Portals Monitored
             </div>
             <div className="text-xl font-bold text-slate-900 mt-0.5">3</div>
             <div className="text-[10px] text-slate-500 mt-1">ServicePlus • MahaOnline • FoSCoS</div>
@@ -177,7 +177,7 @@ export default function AdminQueueView({ onApproveItem }) {
                   onClick={() => setActiveFilter('pending')}
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                     activeFilter === 'pending'
-                      ? 'bg-navy-950 text-white'
+                      ? 'bg-slate-800 text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
@@ -187,7 +187,7 @@ export default function AdminQueueView({ onApproveItem }) {
                   onClick={() => setActiveFilter('auto')}
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                     activeFilter === 'auto'
-                      ? 'bg-navy-950 text-white'
+                      ? 'bg-slate-800 text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
@@ -197,7 +197,7 @@ export default function AdminQueueView({ onApproveItem }) {
                   onClick={() => setActiveFilter('flagged')}
                   className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
                     activeFilter === 'flagged'
-                      ? 'bg-navy-950 text-white'
+                      ? 'bg-slate-800 text-white shadow-sm'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
                 >
@@ -212,7 +212,7 @@ export default function AdminQueueView({ onApproveItem }) {
           </div>
 
           {/* Queue Item 1: Municipal Trade License */}
-          <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card space-y-3">
+          <div className="card-3d-interactive rounded-2xl p-5 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-xs">
@@ -265,13 +265,13 @@ export default function AdminQueueView({ onApproveItem }) {
               </div>
 
               {/* Right Box: Normalized Task Schema JSON */}
-              <div className="p-3 bg-[#0B111E] text-slate-200 rounded-xl border border-slate-800 font-mono text-[10px] flex flex-col justify-between">
+              <div className="p-3 bg-slate-50 text-slate-800 rounded-xl border border-slate-200 font-mono text-[10px] flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center justify-between text-[9px] font-bold text-slate-400 mb-1.5">
-                    <span className="text-slate-400">NORMALIZED TASK SCHEMA NODE</span>
-                    <span className="text-emerald-400">DAG_STRUCT_VALID</span>
+                  <div className="flex items-center justify-between text-[9px] font-bold text-slate-500 mb-1.5">
+                    <span className="text-slate-600 font-semibold">NORMALIZED TASK SCHEMA NODE</span>
+                    <span className="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">DAG_STRUCT_VALID</span>
                   </div>
-                  <pre className="text-emerald-400/90 leading-tight overflow-x-auto p-1">
+                  <pre className="text-emerald-800 leading-tight overflow-x-auto p-1 font-semibold">
 {`{
   "node_id": "tmc_trade_food_v1",
   "jurisdiction_id": "in_mh_thane_tmc",
@@ -320,7 +320,7 @@ export default function AdminQueueView({ onApproveItem }) {
           </div>
 
           {/* Queue Item 2: FSSAI Basic Food Registration */}
-          <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card space-y-3">
+          <div className="card-3d-interactive rounded-2xl p-5 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-xs">
@@ -363,7 +363,7 @@ export default function AdminQueueView({ onApproveItem }) {
             <div className="flex items-center justify-between pt-2 border-t border-slate-100">
               <button
                 onClick={() => handleAction('Inspecting JSON AST node representation')}
-                className="text-terracotta hover:underline font-semibold text-xs flex items-center gap-1"
+                className="text-terracotta hover:underline font-semibold text-xs flex items-center gap-1 cursor-pointer"
               >
                 <FileCode className="w-3.5 h-3.5" />
                 <span>Inspect JSON AST</span>
@@ -371,7 +371,7 @@ export default function AdminQueueView({ onApproveItem }) {
 
               <button
                 onClick={() => handleAction('FSSAI Form A node published live.')}
-                className="flex items-center gap-1.5 px-4 py-1.5 bg-[#111827] hover:bg-slate-900 text-white text-xs font-bold rounded-lg shadow-sm transition-all"
+                className="btn-3d-terracotta flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold rounded-lg cursor-pointer"
               >
                 <Check className="w-3.5 h-3.5 stroke-[3]" />
                 <span>Approve & Publish</span>
@@ -380,7 +380,7 @@ export default function AdminQueueView({ onApproveItem }) {
           </div>
 
           {/* Queue Item 3: PMFME Flagged */}
-          <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card space-y-3">
+          <div className="card-3d-interactive rounded-2xl p-5 space-y-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-rose-50 text-rose-700 flex items-center justify-center font-bold text-xs">
@@ -430,7 +430,7 @@ export default function AdminQueueView({ onApproveItem }) {
 
               <button
                 onClick={() => handleAction('Normalized and committed PMFME node.')}
-                className="flex items-center gap-1.5 px-4 py-1.5 bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold rounded-lg shadow-sm transition-all"
+                className="btn-3d-terracotta flex items-center gap-1.5 px-4 py-1.5 text-xs font-bold rounded-lg cursor-pointer"
               >
                 <Check className="w-3.5 h-3.5 stroke-[3]" />
                 <span>Normalize & Approve</span>
@@ -441,52 +441,52 @@ export default function AdminQueueView({ onApproveItem }) {
 
         {/* Right Column (4 cols): Graph Topology + Crawler Audit + Guardrail */}
         <div className="lg:col-span-4 space-y-5">
-          {/* Graph Topology (Neo4j Online) Card */}
-          <div className="bg-[#111827] text-white rounded-2xl p-5 border border-slate-800 shadow-xl space-y-3">
+          {/* Graph Topology Card */}
+          <div className="card-3d rounded-2xl p-5 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
-                GRAPH TOPOLOGY
+              <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                Graph Topology
               </span>
-              <span className="text-[9px] font-bold text-emerald-400 flex items-center gap-1 font-mono">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                Neo4j Online
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Connected
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-slate-500 leading-relaxed">
               Structural verification of civic dependency nodes across jurisdictions. Cyclical checks prevent infinite requisition loops.
             </p>
 
             {/* Subgraph Diagram Simulation */}
-            <div className="bg-[#0B111E] rounded-xl p-3 border border-slate-800 relative">
-              <div className="text-[8px] font-mono text-slate-500 uppercase flex justify-between mb-2">
-                <span>SUBGRAPH TOPOLOGY</span>
+            <div className="bg-slate-50 rounded-xl p-3 border border-slate-200 shadow-inner relative">
+              <div className="text-[10px] text-slate-500 font-medium flex justify-between mb-2">
+                <span>Dependency Flow</span>
                 <span>DAG Level: L3 Leaf</span>
               </div>
 
               <div className="flex items-center justify-around py-3">
-                <div className="w-8 h-8 rounded-full border border-blue-400 bg-blue-950/60 flex items-center justify-center text-[9px] font-bold text-blue-300 font-mono">
+                <div className="w-9 h-9 rounded-full border border-blue-300 bg-blue-50 flex items-center justify-center text-[10px] font-bold text-blue-700 shadow-sm hover:scale-110 transition-transform cursor-pointer">
                   NOC
                 </div>
-                <span className="text-slate-600 text-xs">→</span>
-                <div className="w-8 h-8 rounded-full border border-amber-400 bg-amber-950/60 flex items-center justify-center text-[9px] font-bold text-amber-300 font-mono">
+                <span className="text-slate-400 text-xs">→</span>
+                <div className="w-9 h-9 rounded-full border border-amber-300 bg-amber-50 flex items-center justify-center text-[10px] font-bold text-amber-700 shadow-sm hover:scale-110 transition-transform cursor-pointer">
                   TAX
                 </div>
-                <span className="text-slate-600 text-xs">→</span>
-                <div className="w-9 h-9 rounded-full border-2 border-terracotta bg-terracotta/30 flex items-center justify-center text-[9px] font-bold text-white font-mono shadow-sm">
+                <span className="text-slate-400 text-xs">→</span>
+                <div className="w-10 h-10 rounded-full border-2 border-terracotta bg-terracotta/10 flex items-center justify-center text-[10px] font-bold text-terracotta shadow-md hover:scale-110 transition-transform cursor-pointer">
                   TRADE
                 </div>
               </div>
             </div>
 
-            <div className="space-y-1.5 text-xs divide-y divide-slate-800/80 pt-1">
+            <div className="space-y-1.5 text-xs divide-y divide-slate-100 pt-1">
               <div className="flex items-center justify-between pt-1">
-                <span className="text-slate-400 text-[11px]">Dependency Integrity</span>
-                <span className="font-bold text-white font-mono">99.1% Connected</span>
+                <span className="text-slate-500 text-[11px]">Dependency Integrity</span>
+                <span className="font-bold text-slate-800">99.1% Connected</span>
               </div>
               <div className="flex items-center justify-between pt-1.5">
-                <span className="text-slate-400 text-[11px]">Cyclical Dependencies</span>
-                <span className="font-bold text-emerald-400 font-mono">0 cycles</span>
+                <span className="text-slate-500 text-[11px]">Cyclical Dependencies</span>
+                <span className="font-bold text-emerald-600">0 cycles</span>
               </div>
               <div className="text-[10px] text-slate-400 pt-1.5 leading-snug">
                 Cluster balance: Thane TMC (48 nodes), FSSAI / FoSCoS (62 nodes), Pune Municipal Corp (72 nodes).
@@ -495,12 +495,12 @@ export default function AdminQueueView({ onApproveItem }) {
           </div>
 
           {/* Live Crawler Audit Trail */}
-          <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card space-y-3">
+          <div className="card-3d rounded-2xl p-5 space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="text-xs font-bold text-slate-900">
                 Live Crawler Audit Trail
               </h4>
-              <button className="text-[10px] text-slate-400 hover:text-slate-600 font-mono flex items-center gap-1">
+              <button className="text-[10px] text-slate-400 hover:text-slate-600 font-mono flex items-center gap-1 cursor-pointer">
                 <Pause className="w-2.5 h-2.5" />
                 <span>Pause</span>
               </button>
@@ -508,7 +508,7 @@ export default function AdminQueueView({ onApproveItem }) {
 
             <div className="space-y-3 text-xs">
               <div className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 mt-1"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0 mt-1 shadow-sm"></span>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono font-bold text-[10px] text-slate-800">AUTO_COMMIT_GRAPH</span>
@@ -521,7 +521,7 @@ export default function AdminQueueView({ onApproveItem }) {
               </div>
 
               <div className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0 mt-1"></span>
+                <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0 mt-1 shadow-sm"></span>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono font-bold text-[10px] text-slate-800">DIFF_PARSE_WARN</span>
@@ -534,7 +534,7 @@ export default function AdminQueueView({ onApproveItem }) {
               </div>
 
               <div className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-500 shrink-0 mt-1 shadow-sm"></span>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-mono font-bold text-[10px] text-slate-800">SCRAPE_SUCCESS</span>
@@ -547,32 +547,32 @@ export default function AdminQueueView({ onApproveItem }) {
               </div>
             </div>
 
-            <button className="text-terracotta hover:underline font-semibold text-xs pt-1 block">
+            <button className="text-terracotta hover:underline font-semibold text-xs pt-1 block cursor-pointer">
               View Detailed System Logs →
             </button>
           </div>
 
           {/* Ingestion Policy Guardrail */}
-          <div className="bg-[#111827] text-white rounded-2xl p-5 border border-slate-800 shadow-xl space-y-2">
+          <div className="card-3d rounded-2xl p-5 space-y-2">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-amber-400" />
-              <h4 className="text-xs font-bold text-white">
+              <ShieldCheck className="w-4 h-4 text-amber-600" />
+              <h4 className="text-xs font-bold text-slate-900">
                 Ingestion Policy Guardrail
               </h4>
             </div>
-            <p className="text-[11px] text-slate-400 leading-relaxed">
+            <p className="text-[11px] text-slate-500 leading-relaxed">
               By approving a node, you certify that statutory fees conform to official gazette schedules. Unverified fees propagate to citizen calculators within 3 minutes.
             </p>
-            <div className="pt-2 border-t border-slate-800 text-[10px] text-slate-500 flex items-center justify-between">
+            <div className="pt-2 border-t border-slate-100 text-[10px] text-slate-500 flex items-center justify-between">
               <span>Audit Operator: admin_04@nagrikmarg.gov.in</span>
-              <button className="text-slate-300 hover:text-white underline">Export Log</button>
+              <button className="text-terracotta hover:underline font-semibold cursor-pointer">Export Log</button>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Table: Recent Automated Commits */}
-      <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card space-y-4">
+      <div className="card-3d rounded-2xl p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 className="text-sm font-bold text-slate-900">
@@ -646,7 +646,7 @@ export default function AdminQueueView({ onApproveItem }) {
           <span>Showing 4 of 182 graph committed nodes</span>
           <div className="flex items-center gap-1 font-mono text-[11px]">
             <button className="px-2 py-1 rounded hover:bg-slate-100">Prev</button>
-            <button className="px-2 py-1 rounded bg-navy-950 text-white font-bold">1</button>
+            <button className="px-2 py-1 rounded bg-slate-800 text-white font-bold">1</button>
             <button className="px-2 py-1 rounded hover:bg-slate-100">2</button>
             <button className="px-2 py-1 rounded hover:bg-slate-100">3</button>
             <button className="px-2 py-1 rounded hover:bg-slate-100">Next</button>

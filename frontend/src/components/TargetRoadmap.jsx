@@ -30,13 +30,13 @@ export default function TargetRoadmap({
   return (
     <div className="space-y-6">
       {/* Active Target Roadmap Card */}
-      <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+      <div className="card-3d rounded-2xl p-6">
         {/* Top Tag & Status */}
         <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
           <span className="text-xs font-semibold text-slate-500">
             Thane Municipal Jurisdiction (TMC)
           </span>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 font-mono">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 shadow-sm animate-pulse">
             <CheckCircle2 className="w-3 h-3 text-blue-600" />
             Step 1 Complete
           </span>
@@ -53,12 +53,12 @@ export default function TargetRoadmap({
         </div>
 
         {/* JURISDICTION PIPELINE PROGRESS Stepper */}
-        <div className="bg-[#f8fafc] rounded-2xl p-4 sm:p-5 border border-slate-200/90 mb-5">
+        <div className="bg-slate-50/90 rounded-2xl p-4 sm:p-5 border border-slate-200/90 shadow-inner mb-5">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider font-mono">
-              JURISDICTION PIPELINE PROGRESS
+            <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wide">
+              Jurisdiction Pipeline Progress
             </span>
-            <span className="text-[10px] font-bold text-terracotta font-mono">
+            <span className="text-[11px] font-bold text-terracotta">
               50% Dispatched
             </span>
           </div>
@@ -66,328 +66,326 @@ export default function TargetRoadmap({
           <div className="relative flex items-center justify-between">
             {/* Connecting line */}
             <div className="absolute left-6 right-6 top-4 h-0.5 bg-slate-200 -z-0">
-              <div className="h-full bg-terracotta w-1/2"></div>
+              <div className="h-full bg-terracotta w-1/2 transition-all duration-500"></div>
             </div>
 
             {/* Stepper Node 1 */}
-            <div className="relative z-10 flex flex-col items-center text-center">
-              <div className="w-8 h-8 rounded-full bg-terracotta text-white flex items-center justify-center font-bold text-xs shadow-sm">
+            <div className="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-terracotta text-white flex items-center justify-center font-bold text-xs shadow-md group-hover:scale-110 group-hover:shadow-lg transition-all duration-200">
                 <Check className="w-4 h-4 stroke-[3]" />
               </div>
               <span className="text-[11px] font-bold text-slate-900 mt-2">FSSAI Portal</span>
-              <span className="text-[9px] text-slate-400 font-medium">(Central)</span>
+              <span className="text-[9px] text-slate-500 font-medium">(Central)</span>
             </div>
 
             {/* Stepper Node 2 */}
-            <div className="relative z-10 flex flex-col items-center text-center">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-300 text-slate-600 flex items-center justify-center font-bold text-xs shadow-sm">
-                <Building2 className="w-4 h-4 text-slate-600" />
+            <div className="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-400 text-slate-700 flex items-center justify-center font-bold text-xs shadow-md group-hover:scale-110 group-hover:shadow-lg transition-all duration-200">
+                <Building2 className="w-4 h-4 text-slate-700" />
               </div>
               <span className="text-[11px] font-bold text-slate-900 mt-2">TMC Ward Desk</span>
-              <span className="text-[9px] text-slate-400 font-medium">(Urban Local Body)</span>
+              <span className="text-[9px] text-slate-500 font-medium">(Urban Local Body)</span>
             </div>
 
             {/* Stepper Node 3 */}
-            <div className="relative z-10 flex flex-col items-center text-center">
-              <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-200 text-slate-300 flex items-center justify-center font-bold text-xs shadow-sm">
+            <div className="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+              <div className="w-8 h-8 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center font-bold text-xs shadow-sm group-hover:scale-110 group-hover:shadow-md transition-all duration-200">
                 <Award className="w-4 h-4 text-slate-400" />
               </div>
               <span className="text-[11px] font-bold text-slate-400 mt-2">Final Joint Accreditation</span>
               <span className="text-[9px] text-slate-400 font-medium">(Authorized)</span>
             </div>
           </div>
+        </div>
 
-          {/* View Details & Track Order Buttons */}
-          <div className="flex flex-wrap items-center justify-between gap-2 mt-4 pt-3 border-t border-slate-200/80">
-            {onOpenTaskTracking && (
-              <button
-                type="button"
-                onClick={() => onOpenTaskTracking('task_food_business')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-terracotta hover:text-terracotta-hover bg-[#fdf4f2] hover:bg-[#faeae6] border border-terracotta/20 rounded-xl transition-all cursor-pointer shadow-soft-sm active:scale-95"
-              >
-                <span>Track Zigzag Timeline & Order Status →</span>
-              </button>
-            )}
-            <button
-              type="button"
-              onClick={() => setIsDetailsExpanded && setIsDetailsExpanded(!isDetailsExpanded)}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 text-slate-800 text-xs font-bold rounded-xl border border-slate-300 transition-all shadow-sm active:scale-95 cursor-pointer ml-auto"
-            >
-              <span>{isDetailsExpanded ? 'Hide Fee & Checklist Details' : 'View Fee & Checklist Details'}</span>
-              <ChevronDown className={`w-3.5 h-3.5 text-slate-600 transition-transform duration-200 ${isDetailsExpanded ? 'rotate-180' : ''}`} />
-            </button>
+        {/* 3 Metric Cards - Default Visible with 3D Depth */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          <div className="card-3d-interactive p-4 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              PAID REGULATORY FEE
+            </div>
+            <div className="text-base font-bold text-slate-900">
+              ₹100 <span className="text-xs font-normal text-slate-500">FSSAI Form A</span>
+            </div>
+            <div className="text-[10px] text-blue-700 font-semibold mt-1 flex items-center gap-1">
+              <Check className="w-3 h-3 text-blue-600 stroke-[3]" />
+              <span>Transaction Settled</span>
+            </div>
+          </div>
+
+          <div className="card-3d-interactive p-4 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              PENDING COUNTER FEE
+            </div>
+            <div className="text-base font-bold text-slate-900">
+              ₹500 <span className="text-xs font-normal text-slate-500">TMC Statutory</span>
+            </div>
+            <div className="text-[10px] text-slate-500 font-medium mt-1 flex items-center gap-1">
+              <Clock className="w-3 h-3 text-slate-400" />
+              <span>Payable at Ward Desk</span>
+            </div>
+          </div>
+
+          <div className="card-3d-interactive p-4 bg-gradient-to-b from-white to-slate-50/70 rounded-xl cursor-default">
+            <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+              TARGET COMPLETION
+            </div>
+            <div className="text-base font-bold text-slate-900">
+              15 <span className="text-xs font-normal text-slate-500">Working Days</span>
+            </div>
+            <div className="text-[10px] text-slate-500 font-medium mt-1 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3 text-slate-400" />
+              <span>RTS Act Mandated</span>
+            </div>
           </div>
         </div>
 
-        {/* 3 Metric Cards (Collapsible with Smooth Height Transition) */}
-        <div className={`dropdown-collapse ${isDetailsExpanded ? 'open' : ''}`}>
-          <div className="dropdown-collapse-inner pt-3">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-soft-sm">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1">
-                  PAID REGULATORY FEE
-                </div>
-                <div className="text-base font-bold text-slate-900">
-                  ₹100 <span className="text-xs font-normal text-slate-500">FSSAI Form A</span>
-                </div>
-                <div className="text-[10px] text-blue-700 font-semibold mt-1 flex items-center gap-1">
-                  <Check className="w-3 h-3 text-blue-600 stroke-[3]" />
-                  <span>Transaction Settled</span>
-                </div>
-              </div>
-
-              <div className="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-soft-sm">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1">
-                  PENDING COUNTER FEE
-                </div>
-                <div className="text-base font-bold text-slate-900">
-                  ₹500 <span className="text-xs font-normal text-slate-500">TMC Statutory</span>
-                </div>
-                <div className="text-[10px] text-slate-500 font-medium mt-1 flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-slate-400" />
-                  <span>Payable at Ward Desk</span>
-                </div>
-              </div>
-
-              <div className="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/90 shadow-soft-sm">
-                <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono mb-1">
-                  TARGET COMPLETION
-                </div>
-                <div className="text-base font-bold text-slate-900">
-                  15 <span className="text-xs font-normal text-slate-500">Working Days</span>
-                </div>
-                <div className="text-[10px] text-slate-500 font-medium mt-1 flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-slate-400" />
-                  <span>RTS Act Mandated</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Controls: Track Zigzag Timeline & View Sequential Steps */}
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-slate-200/80">
+          {onOpenTaskTracking && (
+            <button
+              type="button"
+              onClick={() => onOpenTaskTracking('task_food_business')}
+              className="btn-3d-white inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-terracotta rounded-xl cursor-pointer"
+            >
+              <span>Track Zigzag Timeline & Order Status →</span>
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setIsDetailsExpanded && setIsDetailsExpanded(!isDetailsExpanded)}
+            className="btn-3d-white inline-flex items-center gap-2 px-4 py-1.5 text-slate-800 text-xs font-bold rounded-xl cursor-pointer ml-auto"
+          >
+            <span>{isDetailsExpanded ? 'Hide Sequential Execution Steps' : 'View Sequential Execution Steps'}</span>
+            <ChevronDown className={`w-3.5 h-3.5 text-slate-600 transition-transform duration-200 ${isDetailsExpanded ? 'rotate-180' : ''}`} />
+          </button>
         </div>
       </div>
 
-      {/* Procedural DAG: Sequential Execution */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-terracotta"></span>
-              Procedural DAG: Sequential Execution
-            </h3>
-            <p className="text-[11px] text-slate-400 mt-0.5">
-              2 Phases • ₹600 Total Statutory Cost
-            </p>
-          </div>
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 font-mono">
-            Synchronous Pipeline
-          </span>
-        </div>
-
-        {/* Step 1 Card */}
-        <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-[#fceee9] text-terracotta font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-              1
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
-                    FSSAI Basic Registration (Form A)
-                  </h4>
-                  <p className="text-[11px] text-slate-400">
-                    Central FoSCoS Portal • Ref: FSSAI-2025-88391
-                  </p>
-                </div>
-                <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1">
-                  <Check className="w-3 h-3 stroke-[3]" />
-                  Verified & Issued
-                </span>
-              </div>
-
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Self-declaration under Schedule 4 Hygiene & Sanitary norms completed. Food Business Operator (FBO) category: Home Manufacturer (&lt; ₹12L turnover). Digital registration generated.
+      {/* Procedural DAG: Sequential Execution (Collapsible) */}
+      <div className={`dropdown-collapse ${isDetailsExpanded ? 'open' : ''}`}>
+        <div className="dropdown-collapse-inner space-y-4 pt-1">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-terracotta"></span>
+                Procedural DAG: Sequential Execution
+              </h3>
+              <p className="text-[11px] text-slate-400 mt-0.5">
+                2 Phases • ₹600 Total Statutory Cost
               </p>
-
-              {/* Official Government Verification & Phone Helpline */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase font-mono">Official Source:</span>
-                  <a
-                    href="https://foscos.fssai.gov.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors"
-                  >
-                    <span>foscos.fssai.gov.in</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
-                  <Phone className="w-3 h-3 text-emerald-600" />
-                  <span className="font-semibold text-slate-500">Helpline:</span>
-                  <a href="tel:1800112100" className="font-mono font-bold text-slate-800 hover:text-blue-700">
-                    1800-112-100
-                  </a>
-                  <span className="text-[10px] text-slate-400">(Toll-Free FSSAI Desk)</span>
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-3 pt-2 border-t border-slate-100">
-                <span className="text-[11px] text-slate-500 font-medium">
-                  QR Validated • Valid till: Oct 2026
-                </span>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => onInspectDocument('FSSAI Basic Registration (Form A)')}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-colors shadow-soft-sm cursor-pointer"
-                  >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>Preview</span>
-                  </button>
-                  <button
-                    onClick={() => onDownloadForm({ title: 'FSSAI Certificate' })}
-                    className="flex items-center gap-1.5 px-3.5 py-1.5 bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold rounded-xl transition-all shadow-sm cursor-pointer"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>Download Certificate</span>
-                  </button>
-                </div>
-              </div>
             </div>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 font-mono">
+              Synchronous Pipeline
+            </span>
           </div>
-        </div>
 
-        {/* Step 2 Card */}
-        <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-card">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-terracotta text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-              2
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
-                    TMC Municipal Trade & Health License
-                  </h4>
-                  <p className="text-[11px] text-slate-400">
-                    Urban Local Body • Section 376 MMC Act
-                  </p>
-                </div>
-                <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                  In-Person Desk Visit
-                </span>
+          {/* Step 1 Card */}
+          <div className="card-3d-interactive rounded-2xl p-5">
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 rounded-full bg-[#fceee9] text-terracotta font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                1
               </div>
 
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
-                Physical verification and trade declaration at Pachpakhadi Ward Office. Requires physical dossier with FSSAI certificate printout and landlord NOC.
-              </p>
-
-              {/* Official Government Verification & Phone Helpline */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase font-mono">Official Source:</span>
-                  <a
-                    href="https://thanecity.gov.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors"
-                  >
-                    <span>thanecity.gov.in</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
-                  <Phone className="w-3 h-3 text-emerald-600" />
-                  <span className="font-semibold text-slate-500">Ward Desk:</span>
-                  <a href="tel:+912225331590" className="font-mono font-bold text-slate-800 hover:text-blue-700">
-                    +91 22 2533 1590
-                  </a>
-                  <span className="text-[10px] text-slate-400">(Room 108 Counter 4)</span>
-                </div>
-              </div>
-
-              {/* Appointment Box */}
-              <div className="mt-3 p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-700 shrink-0">
-                    <Calendar className="w-4 h-4 text-terracotta" />
-                  </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
                   <div>
-                    <div className="text-xs font-bold text-slate-900">14 October, 11:30 AM</div>
-                    <div className="text-[11px] text-slate-500">Health Inspector Desk, Room 108, Pachpakhadi Office</div>
+                    <h4 className="text-sm font-bold text-slate-900">
+                      FSSAI Basic Registration (Form A)
+                    </h4>
+                    <p className="text-[11px] text-slate-400">
+                      Central FoSCoS Portal • Ref: FSSAI-2025-88391
+                    </p>
+                  </div>
+                  <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1 shadow-sm">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                    Verified & Issued
+                  </span>
+                </div>
+
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Self-declaration under Schedule 4 Hygiene & Sanitary norms completed. Food Business Operator (FBO) category: Home Manufacturer (&lt; ₹12L turnover). Digital registration generated.
+                </p>
+
+                {/* Official Government Verification & Phone Helpline */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[11px] font-medium text-slate-500">Official Source:</span>
+                    <a
+                      href="https://foscos.fssai.gov.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 hover:bg-blue-100 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors shadow-soft-sm cursor-pointer"
+                    >
+                      <span>foscos.fssai.gov.in</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 shadow-soft-sm">
+                    <Phone className="w-3 h-3 text-emerald-600" />
+                    <span className="font-semibold text-slate-500">Helpline:</span>
+                    <a href="tel:1800112100" className="font-bold text-slate-800 hover:text-blue-700">
+                      1800-112-100
+                    </a>
+                    <span className="text-[10px] text-slate-400">(Toll-Free FSSAI Desk)</span>
                   </div>
                 </div>
 
-                <button
-                  onClick={() => onInspectDocument('Physical Desk Checklist')}
-                  className="flex items-center gap-1.5 px-3.5 py-1.5 bg-terracotta hover:bg-terracotta-hover text-white text-xs font-bold rounded-xl transition-all shadow-sm shrink-0 cursor-pointer"
-                >
-                  <FolderOpen className="w-3.5 h-3.5" />
-                  <span>Checklist & Dossier</span>
-                </button>
-              </div>
-
-              <div className="mt-3 pt-2 text-[10px] text-slate-400 flex items-center justify-between">
-                <span>Protected by Maharashtra Right to Public Services Act (RTSA)</span>
-                <span className="text-emerald-700 font-semibold">Zero-Bribe Guaranteed</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-3 pt-2 border-t border-slate-100">
+                  <span className="text-[11px] text-slate-500 font-medium">
+                    QR Validated • Valid till: Oct 2026
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => onInspectDocument('FSSAI Basic Registration (Form A)')}
+                      className="btn-3d-white flex items-center gap-1.5 px-3 py-1.5 text-slate-700 text-xs font-semibold rounded-xl cursor-pointer"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Preview</span>
+                    </button>
+                    <button
+                      onClick={() => onDownloadForm({ title: 'FSSAI Certificate' })}
+                      className="btn-3d-terracotta flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-xl cursor-pointer"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>Download Certificate</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Step 3 Card */}
-        <div className="bg-white/80 rounded-2xl p-5 border border-slate-200/90 shadow-card">
-          <div className="flex items-start gap-4">
-            <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-              3
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900">
-                    Ward Sanitary Inspector Site Verification
-                  </h4>
-                  <p className="text-[11px] text-slate-400">
-                    Conditional Dispatch (Only if kitchen volume &gt; 50 units/day)
-                  </p>
-                </div>
-                <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">
-                  Upcoming
-                </span>
+          {/* Step 2 Card */}
+          <div className="card-3d-interactive rounded-2xl p-5 border-2 border-terracotta/20 shadow-md">
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 rounded-full bg-terracotta text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-md">
+                2
               </div>
 
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed">
-                Random audit triggered only if commercial gas cylinder utility exceeds domestic limits. Automatic waiver applied for cottage bakers and tiffin suppliers under ₹3L annual revenue.
-              </p>
-
-              {/* Official Government Verification & Phone Helpline */}
-              <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase font-mono">Official Source:</span>
-                  <a
-                    href="https://aaplesarkar.mahaonline.gov.in"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors"
-                  >
-                    <span>aaplesarkar.mahaonline.gov.in</span>
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-900">
+                      TMC Municipal Trade & Health License
+                    </h4>
+                    <p className="text-[11px] text-slate-400">
+                      Urban Local Body • Section 376 MMC Act
+                    </p>
+                  </div>
+                  <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 shadow-sm animate-pulse">
+                    In-Person Desk Visit
+                  </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
-                  <Phone className="w-3 h-3 text-emerald-600" />
-                  <span className="font-semibold text-slate-500">RTS Helpline:</span>
-                  <a href="tel:18001208040" className="font-mono font-bold text-slate-800 hover:text-blue-700">
-                    1800-120-8040
-                  </a>
-                  <span className="text-[10px] text-slate-400">(Maharashtra RTS Desk)</span>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  Physical verification and trade declaration at Pachpakhadi Ward Office. Requires physical dossier with FSSAI certificate printout and landlord NOC.
+                </p>
+
+                {/* Official Government Verification & Phone Helpline */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[11px] font-medium text-slate-500">Official Source:</span>
+                    <a
+                      href="https://thanecity.gov.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 hover:bg-blue-100 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors shadow-soft-sm cursor-pointer"
+                    >
+                      <span>thanecity.gov.in</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200 shadow-soft-sm">
+                    <Phone className="w-3 h-3 text-emerald-600" />
+                    <span className="font-semibold text-slate-500">Ward Desk:</span>
+                    <a href="tel:+912225331590" className="font-bold text-slate-800 hover:text-blue-700">
+                      +91 22 2533 1590
+                    </a>
+                    <span className="text-[10px] text-slate-400">(Room 108 Counter 4)</span>
+                  </div>
+                </div>
+
+                {/* Appointment Box */}
+                <div className="mt-3 p-3 bg-gradient-to-r from-slate-50 to-white rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-700 shrink-0">
+                      <Calendar className="w-4 h-4 text-terracotta" />
+                    </div>
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">14 October, 11:30 AM</div>
+                      <div className="text-[11px] text-slate-500">Health Inspector Desk, Room 108, Pachpakhadi Office</div>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => onInspectDocument('Physical Desk Checklist')}
+                    className="btn-3d-terracotta flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-xl shrink-0 cursor-pointer"
+                  >
+                    <FolderOpen className="w-3.5 h-3.5" />
+                    <span>Checklist & Dossier</span>
+                  </button>
+                </div>
+
+                <div className="mt-3 pt-2 text-[10px] text-slate-400 flex items-center justify-between">
+                  <span>Protected by Maharashtra Right to Public Services Act (RTSA)</span>
+                  <span className="text-emerald-700 font-semibold">Zero-Bribe Guaranteed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Step 3 Card */}
+          <div className="card-3d-interactive rounded-2xl p-5">
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                3
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-900">
+                      Ward Sanitary Inspector Site Verification
+                    </h4>
+                    <p className="text-[11px] text-slate-400">
+                      Conditional Dispatch (Only if kitchen volume &gt; 50 units/day)
+                    </p>
+                  </div>
+                  <span className="self-start sm:self-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">
+                    Upcoming
+                  </span>
+                </div>
+
+                <p className="text-xs text-slate-500 mt-2 leading-relaxed">
+                  Random audit triggered only if commercial gas cylinder utility exceeds domestic limits. Automatic waiver applied for cottage bakers and tiffin suppliers under ₹3L annual revenue.
+                </p>
+
+                {/* Official Government Verification & Phone Helpline */}
+                <div className="flex flex-wrap items-center justify-between gap-2 mt-3 pt-2.5 pb-1 border-t border-slate-100 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-bold text-slate-400 uppercase font-mono">Official Source:</span>
+                    <a
+                      href="https://aaplesarkar.mahaonline.gov.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-blue-700 hover:text-blue-800 hover:underline bg-blue-50 px-2 py-0.5 rounded-lg border border-blue-200 transition-colors"
+                    >
+                      <span>aaplesarkar.mahaonline.gov.in</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-[11px] text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-200">
+                    <Phone className="w-3 h-3 text-emerald-600" />
+                    <span className="font-semibold text-slate-500">RTS Helpline:</span>
+                    <a href="tel:18001208040" className="font-mono font-bold text-slate-800 hover:text-blue-700">
+                      1800-120-8040
+                    </a>
+                    <span className="text-[10px] text-slate-400">(Maharashtra RTS Desk)</span>
+                  </div>
                 </div>
               </div>
             </div>

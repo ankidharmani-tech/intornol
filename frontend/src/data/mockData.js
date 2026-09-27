@@ -431,7 +431,7 @@ export const TASKS_DATA = {
           id: 'step_3',
           number: '03',
           title: 'TMC Municipal Ward Desk Verification',
-          date: 'Active • Scheduled 28 Sep 2026, 10:30 AM',
+          date: 'Scheduled for 28 Sep 2026, 10:30 AM',
           status: 'in_progress',
           statusLabel: 'Active In-Progress',
           summary: 'Physical verification of society NOC, trade declaration, and counter fee payment at Counter 4.',
