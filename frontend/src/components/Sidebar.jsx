@@ -54,9 +54,9 @@ export default function Sidebar({
             <Landmark className="w-5 h-5 text-amber-400" />
           </div>
           <div>
-            <div className="font-bold text-slate-900 text-[16px] tracking-tight leading-none">Nagrik Marg</div>
-            <div className="text-[10px] font-semibold tracking-wider text-slate-400 uppercase mt-1">
-              CIVIC NAVIGATOR
+            <div className="font-extrabold text-slate-900 text-[16px] tracking-tight leading-none">ForThePeople</div>
+            <div className="text-[10px] font-bold tracking-widest text-terracotta uppercase mt-1 font-mono">
+              BY THE PEOPLE
             </div>
           </div>
         </div>

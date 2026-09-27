@@ -108,7 +108,7 @@ export default function AdminQueueView({ onApproveItem }) {
           Gov Data Verification & Ingestion Queue
         </h1>
         <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-3xl mb-6">
-          Human-in-the-loop audit protocol. Validate scraped civic procedures, map unstructured RTI notices into deterministic task trees, and commit approved nodes to the Nagrik Marg civic knowledge graph.
+          Human-in-the-loop audit protocol. Validate scraped civic procedures, map unstructured RTI notices into deterministic task trees, and commit approved nodes to the ForThePeople civic knowledge graph.
         </p>
 
         {/* 4 Metric Summary Cards */}
@@ -564,7 +564,7 @@ export default function AdminQueueView({ onApproveItem }) {
               By approving a node, you certify that statutory fees conform to official gazette schedules. Unverified fees propagate to citizen calculators within 3 minutes.
             </p>
             <div className="pt-2 border-t border-slate-100 text-[10px] text-slate-500 flex items-center justify-between">
-              <span>Audit Operator: admin_04@nagrikmarg.gov.in</span>
+              <span>Audit Operator: admin_04@forthepeople.gov.in</span>
               <button className="text-terracotta hover:underline font-semibold cursor-pointer">Export Log</button>
             </div>
           </div>

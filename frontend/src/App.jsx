@@ -261,7 +261,7 @@ export default function App() {
                 Configure default state jurisdictions, Bhashini dialect accents (Varhadi, Ahirani, Deshi Marathi), and API endpoints for Neo4j AuraDB graph syncing.
               </p>
               <div className="inline-block px-3 py-1 bg-amber-50 text-amber-900 border border-amber-200 text-xs font-semibold rounded-lg">
-                Nagrik Marg v2.4 (Production Ready)
+                ForThePeople v2.4 • BY THE PEOPLE
               </div>
             </div>
           )}

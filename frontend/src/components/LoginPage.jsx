@@ -83,23 +83,17 @@ export default function LoginPage({ onLogin }) {
 
       {/* Top National / Civic Portal Banner */}
       <div className="max-w-md w-full mx-auto text-center space-y-2">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/90 border border-slate-200 shadow-3d-sm rounded-full backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="text-[11px] font-bold text-slate-700 tracking-wide uppercase">
-            Government of Maharashtra • Unified Civic Gateway
-          </span>
-        </div>
         
         <div className="flex items-center justify-center gap-2.5 pt-1">
-          <div className="w-10 h-10 rounded-2xl bg-navy-900 text-white flex items-center justify-center shadow-3d-btn font-black text-lg">
-            NM
+          <div className="w-10 h-10 rounded-2xl bg-navy-900 text-white flex items-center justify-center shadow-3d-btn font-black text-sm tracking-tighter">
+            FTP
           </div>
           <div className="text-left">
             <h1 className="text-2xl font-black text-slate-900 tracking-tight leading-none">
-              नागरिक मार्ग
+              ForThePeople
             </h1>
-            <p className="text-[11px] font-bold text-terracotta tracking-wider uppercase mt-0.5">
-              Nagrik Marg Civic Navigator
+            <p className="text-[11px] font-bold text-terracotta tracking-widest uppercase mt-0.5 font-mono">
+              BY THE PEOPLE
             </p>
           </div>
         </div>
@@ -315,7 +309,7 @@ export default function LoginPage({ onLogin }) {
           <span>TMC Ward #4</span>
         </div>
         <p className="text-[10px] text-slate-400">
-          Nagrik Marg Civic Navigator © 2026. All statutory procedural models ground on Maharashtra Government Gazettes.
+          ForThePeople Civic Navigator © 2026. BY THE PEOPLE. All statutory procedural models ground on Maharashtra Government Gazettes.
         </p>
       </div>
     </div>
