@@ -11,7 +11,9 @@ import {
   ExternalLink,
   IndianRupee,
   CheckCircle2,
-  X
+  X,
+  LogOut,
+  ShieldCheck
 } from 'lucide-react';
 import { CITIES } from '../data/mockData';
 
@@ -58,13 +60,18 @@ export default function Header({
   setLanguage, 
   searchQuery, 
   setSearchQuery,
-  onExportChecklist 
+  onExportChecklist,
+  currentUser,
+  onLogout,
+  onSwitchRole
 }) {
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
   const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [schemes, setSchemes] = useState(SCHEME_NOTIFICATIONS);
   const notificationRef = useRef(null);
   const cityRef = useRef(null);
+  const userMenuRef = useRef(null);
 
   const unreadCount = schemes.filter(s => s.isNew).length;
 
@@ -80,6 +87,9 @@ export default function Header({
       }
       if (cityRef.current && !cityRef.current.contains(event.target)) {
         setCityDropdownOpen(false);
+      }
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -273,9 +283,81 @@ export default function Header({
           <span>Export</span>
         </button>
 
-        {/* User Profile Avatar */}
-        <div className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center font-medium shadow-md cursor-pointer hover:scale-110 active:scale-95 transition-all">
-          <User className="w-4 h-4 text-slate-200" />
+        {/* User Profile Avatar & Dropdown */}
+        <div className="relative" ref={userMenuRef}>
+          <button
+            onClick={() => setUserMenuOpen(!userMenuOpen)}
+            className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-md cursor-pointer hover:scale-105 active:scale-95 transition-all ${
+              currentUser?.role === 'admin'
+                ? 'bg-navy-900 text-amber-400 ring-2 ring-amber-400/40'
+                : 'bg-slate-900 text-white'
+            }`}
+            title="User Profile & Session"
+          >
+            {currentUser?.avatar || (currentUser?.role === 'admin' ? 'RS' : 'SJ')}
+          </button>
+
+          {userMenuOpen && (
+            <div className="card-3d absolute right-0 mt-2 w-72 rounded-2xl py-3 px-4 z-50 animate-fade-in-up space-y-3">
+              {/* Profile Overview */}
+              <div className="pb-2.5 border-b border-slate-100 flex items-center gap-3">
+                <div className={`w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-sm shadow-sm ${
+                  currentUser?.role === 'admin' ? 'bg-navy-900 text-amber-400' : 'bg-slate-900 text-white'
+                }`}>
+                  {currentUser?.avatar || 'NM'}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs font-bold text-slate-900 truncate">
+                    {currentUser?.name || 'Citizen User'}
+                  </div>
+                  <div className="text-[10px] text-slate-400 truncate">
+                    {currentUser?.email || 'citizen@thanecity.gov.in'}
+                  </div>
+                  <span className={`inline-block text-[9px] font-bold px-1.5 py-0.2 rounded-full uppercase tracking-wider mt-1 ${
+                    currentUser?.role === 'admin'
+                      ? 'bg-blue-100 text-blue-900 border border-blue-200'
+                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                  }`}>
+                    {currentUser?.role === 'admin' ? 'Officer / Admin' : 'Verified Citizen'}
+                  </span>
+                </div>
+              </div>
+
+              {/* Department / Ward Context */}
+              <div className="p-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-[11px] text-slate-600 space-y-1">
+                <div className="font-semibold text-slate-800">
+                  {currentUser?.role === 'admin' ? 'Assigned Jurisdiction:' : 'Citizen Ward Desk:'}
+                </div>
+                <div className="text-slate-500">
+                  {currentUser?.ward || 'Naupada - Kopri Ward #4, Thane'}
+                </div>
+              </div>
+
+              {/* Switch Role Button */}
+              <button
+                onClick={() => {
+                  onSwitchRole();
+                  setUserMenuOpen(false);
+                }}
+                className="w-full py-1.5 px-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs font-bold transition-colors flex items-center justify-between cursor-pointer"
+              >
+                <span>Switch to {currentUser?.role === 'admin' ? 'Citizen View' : 'Admin View'}</span>
+                <span className="text-[10px] text-slate-500 font-normal">Toggle ➜</span>
+              </button>
+
+              {/* Sign Out Button */}
+              <button
+                onClick={() => {
+                  setUserMenuOpen(false);
+                  onLogout();
+                }}
+                className="w-full py-2 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Sign Out of Portal</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>

@@ -14,9 +14,12 @@ import ClarifyingModal from './components/ClarifyingModal';
 import DocumentPreviewModal from './components/DocumentPreviewModal';
 import DailyReportModal from './components/DailyReportModal';
 import BhashiniVoiceModal from './components/BhashiniVoiceModal';
+import LoginPage, { DEMO_USERS } from './components/LoginPage';
+import { ShieldAlert } from 'lucide-react';
 import { CITIES } from './data/mockData';
 
 export default function App() {
+  const [currentUser, setCurrentUser] = useState(null); // null = renders LoginPage
   const [activeTab, setActiveTab] = useState('dashboard');
   const [selectedCity, setSelectedCity] = useState(CITIES[0]); // Default: Thane, MH
   const [language, setLanguage] = useState('EN');
@@ -37,6 +40,23 @@ export default function App() {
   const showToast = (message) => {
     setNotification(message);
     setTimeout(() => setNotification(null), 3500);
+  };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    showToast('Logged out of civic portal successfully.');
+  };
+
+  const handleSwitchRole = () => {
+    if (currentUser?.role === 'admin') {
+      setCurrentUser(DEMO_USERS.citizen);
+      setActiveTab('dashboard');
+      showToast('Switched to Citizen Workspace (Suresh Jadhav). Admin Queue hidden.');
+    } else {
+      setCurrentUser(DEMO_USERS.admin);
+      setActiveTab('adminQueue');
+      showToast('Switched to Municipal Officer Workspace (Dr. Shinde). Admin Queue unlocked.');
+    }
   };
 
   const handleSynthesize = (customQuery) => {
@@ -60,6 +80,24 @@ export default function App() {
     showToast(`Downloading pre-filled statutory form for: ${step.title}`);
   };
 
+  // Render dedicated Login Page if no user is signed in
+  if (!currentUser) {
+    return (
+      <LoginPage 
+        onLogin={(user) => {
+          setCurrentUser(user);
+          if (user.role === 'admin') {
+            setActiveTab('adminQueue');
+            showToast(`Signed in as ${user.name} (Officer). Admin Queue unlocked.`);
+          } else {
+            setActiveTab('dashboard');
+            showToast(`Signed in as ${user.name} (Citizen). Citizen Task Navigator active.`);
+          }
+        }} 
+      />
+    );
+  }
+
   return (
     <div className="flex min-h-screen bg-[#f4f6f8] text-slate-800 font-sans">
       {/* Left Sidebar */}
@@ -73,6 +111,9 @@ export default function App() {
           setSelectedTaskId(id);
           setActiveTab('taskTracking');
         }}
+        currentUser={currentUser}
+        onLogout={handleLogout}
+        onSwitchRole={handleSwitchRole}
       />
 
       {/* Main Content Area */}
@@ -86,6 +127,9 @@ export default function App() {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
           onExportChecklist={handleExportChecklist}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+          onSwitchRole={handleSwitchRole}
         />
 
         {/* Dynamic Notification Toast */}
@@ -177,9 +221,27 @@ export default function App() {
           */}
 
           {activeTab === 'adminQueue' && (
-            <AdminQueueView
-              onApproveItem={() => setPendingQueueCount((c) => Math.max(0, c - 1))}
-            />
+            currentUser?.role === 'admin' ? (
+              <AdminQueueView
+                onApproveItem={() => setPendingQueueCount((c) => Math.max(0, c - 1))}
+              />
+            ) : (
+              <div className="card-3d p-8 text-center max-w-lg mx-auto rounded-3xl space-y-4 my-12 bg-white">
+                <div className="w-12 h-12 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center mx-auto shadow-sm">
+                  <ShieldAlert className="w-6 h-6" />
+                </div>
+                <h2 className="text-lg font-bold text-slate-900">Restricted Administrative Area</h2>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  The Admin Queue is restricted to verified municipal desk officers. It is not accessible in the citizen user section.
+                </p>
+                <button
+                  onClick={handleSwitchRole}
+                  className="btn-3d-slate px-5 py-2.5 text-xs font-bold"
+                >
+                  Sign In as Municipal Officer
+                </button>
+              </div>
+            )
           )}
 
           {/* NOTE: Jurisdiction page is hidden per user request; kept commented for future activation */}

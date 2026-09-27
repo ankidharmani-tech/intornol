@@ -13,7 +13,8 @@ import {
   ChevronRight,
   CheckCircle2,
   Hourglass,
-  Calendar
+  Calendar,
+  LogOut
 } from 'lucide-react';
 import { TASKS_DATA } from '../data/mockData';
 
@@ -23,7 +24,10 @@ export default function Sidebar({
   onOpenDailyReport, 
   pendingCount = 14,
   selectedTaskId,
-  onSelectTask 
+  onSelectTask,
+  currentUser,
+  onLogout,
+  onSwitchRole
 }) {
   const [isTasksOpen, setIsTasksOpen] = useState(true);
   const [isOngoingOpen, setIsOngoingOpen] = useState(true);
@@ -251,23 +255,25 @@ export default function Sidebar({
           </button>
           */}
 
-          {/* Admin Queue */}
-          <button
-            onClick={() => setActiveTab('adminQueue')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
-              activeTab === 'adminQueue'
-                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm font-bold scale-[1.01]'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 hover:shadow-sm'
-            }`}
-          >
-            <div className="flex items-center gap-2.5">
-              <CheckSquare className={`w-4 h-4 ${activeTab === 'adminQueue' ? 'text-slate-900' : 'text-slate-400'}`} />
-              <span>Admin Queue</span>
-            </div>
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-700 border-slate-200 font-mono shadow-sm">
-              {pendingCount}
-            </span>
-          </button>
+          {/* Admin Queue (strictly visible in Admin section only) */}
+          {currentUser?.role === 'admin' && (
+            <button
+              onClick={() => setActiveTab('adminQueue')}
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
+                activeTab === 'adminQueue'
+                  ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm font-bold scale-[1.01]'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:translate-x-1 hover:shadow-sm'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <CheckSquare className={`w-4 h-4 ${activeTab === 'adminQueue' ? 'text-slate-900' : 'text-slate-400'}`} />
+                <span>Admin Queue</span>
+              </div>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-700 border-slate-200 font-mono shadow-sm">
+                {pendingCount}
+              </span>
+            </button>
+          )}
 
           {/* NOTE: Document Guide is removed per user request:
             "remove document guide as right now it looks like u have just one task ongoing and thats why u have durect tab for doc guide"
@@ -331,18 +337,45 @@ export default function Sidebar({
         </div>
 
         {/* User Profile Bar */}
-        <div className="flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 transition-colors">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-navy-950 text-white flex items-center justify-center font-medium text-xs shadow-sm">
-              <span className="font-semibold text-white">#4</span>
+        <div className="p-2.5 rounded-2xl bg-white border border-slate-200/90 shadow-soft-sm space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-sm shrink-0 ${
+                currentUser?.role === 'admin' ? 'bg-navy-900 text-amber-400' : 'bg-slate-900 text-white'
+              }`}>
+                {currentUser?.avatar || (currentUser?.role === 'admin' ? 'RS' : 'SJ')}
+              </div>
+              <div className="text-left min-w-0">
+                <div className="text-xs font-bold text-slate-900 leading-tight truncate">
+                  {currentUser?.name || 'Citizen User'}
+                </div>
+                <div className="flex items-center gap-1 mt-0.5">
+                  <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-full uppercase tracking-wider ${
+                    currentUser?.role === 'admin'
+                      ? 'bg-blue-100 text-blue-900 border border-blue-200'
+                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                  }`}>
+                    {currentUser?.role === 'admin' ? 'TMC Admin' : 'Citizen'}
+                  </span>
+                </div>
+              </div>
             </div>
-            <div className="text-left">
-              <div className="text-xs font-bold text-slate-900 leading-none mb-1">Citizen Desk #4</div>
-              <div className="text-[10px] text-slate-400 font-medium">Admin / Navigator</div>
-            </div>
+
+            <button
+              onClick={onLogout}
+              className="text-slate-400 hover:text-rose-600 p-1.5 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer"
+              title="Sign Out of Portal"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
           </div>
-          <button className="text-slate-400 hover:text-slate-600 p-1 rounded-lg">
-            <MoreVertical className="w-4 h-4" />
+
+          {/* Quick Role Switcher */}
+          <button
+            onClick={onSwitchRole}
+            className="w-full py-1.5 px-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-[10px] font-semibold text-slate-600 hover:text-slate-900 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <span>Switch to {currentUser?.role === 'admin' ? 'Citizen View' : 'Admin View'}</span>
           </button>
         </div>
       </div>
