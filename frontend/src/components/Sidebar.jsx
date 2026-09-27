@@ -23,8 +23,8 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenDailyReport, pe
   ];
 
   return (
-    <aside className="w-64 bg-white border-r border-slate-200/90 flex flex-col justify-between shrink-0 min-h-screen p-4 select-none">
-      <div>
+    <aside className="w-64 bg-white border-r border-slate-200/90 flex flex-col justify-between shrink-0 h-screen sticky top-0 p-4 select-none z-40">
+      <div className="flex flex-col min-h-0">
         {/* Logo Section */}
         <div className="flex items-center gap-3 px-2 py-2 mb-4">
           <div className="w-9 h-9 rounded-xl bg-navy-950 text-white flex items-center justify-center shadow-sm">
@@ -46,7 +46,7 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenDailyReport, pe
         </div>
 
         {/* Navigation Menu */}
-        <nav className="space-y-1">
+        <nav className="space-y-1 overflow-y-auto pr-1">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -76,7 +76,7 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenDailyReport, pe
       </div>
 
       {/* Bottom Section */}
-      <div className="space-y-3 pt-3 border-t border-slate-100">
+      <div className="space-y-3 pt-3 border-t border-slate-100 shrink-0">
         {/* Daily Report Card */}
         <div className="bg-[#f0f6fa]/70 rounded-2xl p-3.5 border border-slate-200/80">
           <div className="flex items-center justify-between mb-1">
