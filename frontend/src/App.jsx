@@ -9,6 +9,7 @@ import DocumentGuideView from './components/DocumentGuideView';
 import NewSchemesView from './components/NewSchemesView';
 import AdminQueueView from './components/AdminQueueView';
 import JurisdictionView from './components/JurisdictionView';
+import TaskTrackingView from './components/TaskTrackingView';
 import ClarifyingModal from './components/ClarifyingModal';
 import DocumentPreviewModal from './components/DocumentPreviewModal';
 import DailyReportModal from './components/DailyReportModal';
@@ -20,9 +21,11 @@ export default function App() {
   const [selectedCity, setSelectedCity] = useState(CITIES[0]); // Default: Thane, MH
   const [language, setLanguage] = useState('EN');
   const [searchQuery, setSearchQuery] = useState('');
-  const [civicQuery, setCivicQuery] = useState('I want to start a home-based food business in Thane');
+  const [civicQuery, setCivicQuery] = useState('');
   const [isPersonalized, setIsPersonalized] = useState(false);
   const [pendingQueueCount, setPendingQueueCount] = useState(14);
+  const [isDetailsExpanded, setIsDetailsExpanded] = useState(false);
+  const [selectedTaskId, setSelectedTaskId] = useState('task_food_business');
 
   // Modals state
   const [isClarifyOpen, setIsClarifyOpen] = useState(false);
@@ -37,8 +40,8 @@ export default function App() {
   };
 
   const handleSynthesize = (customQuery) => {
-    const q = customQuery || civicQuery;
-    showToast(`Synthesizing DAG dependency pathway for: "${q.slice(0, 38)}..."`);
+    const q = customQuery || civicQuery || 'I want to start a home-based food business in Thane';
+    showToast(`Loading procedure roadmap for: "${q.slice(0, 38)}..."`);
   };
 
   const handleApplyProfile = (answers) => {
@@ -65,6 +68,11 @@ export default function App() {
         setActiveTab={setActiveTab}
         onOpenDailyReport={() => setIsDailyReportOpen(true)}
         pendingCount={pendingQueueCount}
+        selectedTaskId={selectedTaskId}
+        onSelectTask={(id) => {
+          setSelectedTaskId(id);
+          setActiveTab('taskTracking');
+        }}
       />
 
       {/* Main Content Area */}
@@ -82,9 +90,9 @@ export default function App() {
 
         {/* Dynamic Notification Toast */}
         {notification && (
-          <div className="fixed top-20 right-8 z-50 bg-navy-950 text-white border border-slate-700 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs animate-in slide-in-from-top-3">
-            <span className="w-2 h-2 rounded-full bg-brandYellow animate-ping"></span>
-            <span>{notification}</span>
+          <div className="fixed top-20 right-8 z-50 bg-white text-slate-800 border border-slate-200/90 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs animate-in slide-in-from-top-3">
+            <span className="w-2 h-2 rounded-full bg-terracotta animate-ping"></span>
+            <span className="font-medium">{notification}</span>
           </div>
         )}
 
@@ -112,32 +120,54 @@ export default function App() {
                     onInspectDocument={(docTitle) => setPreviewDocTitle(docTitle)}
                     onOpenVoiceModal={() => setIsVoiceModalOpen(true)}
                     onDownloadForm={handleDownloadForm}
+                    isDetailsExpanded={isDetailsExpanded}
+                    setIsDetailsExpanded={setIsDetailsExpanded}
+                    onOpenTaskTracking={(taskId) => {
+                      setSelectedTaskId(taskId);
+                      setActiveTab('taskTracking');
+                    }}
                   />
                 </div>
 
-                {/* Right Column: Local Authority Lock + Immediate Action Checklist (5 cols) */}
+                {/* Right Column: Physical Desk Checklist (beside task when expanded) + Local Authority Lock (5 cols) */}
                 <div className="lg:col-span-5 xl:col-span-4 space-y-6">
+                  {isDetailsExpanded && (
+                    <div className="animate-slide-left-to-right">
+                      <ActionChecklist
+                        onInspectDocument={(docTitle) => setPreviewDocTitle(docTitle)}
+                      />
+                    </div>
+                  )}
+
                   <LocalAuthorityLock
                     selectedCity={selectedCity}
                     onBookSlot={(city) =>
                       showToast(`Verification desk slot locked at ${city.authority} (Counter 6)`)
                     }
                   />
-
-                  <ActionChecklist
-                    onInspectDocument={(docTitle) => setPreviewDocTitle(docTitle)}
-                  />
                 </div>
               </div>
             </>
           )}
 
+          {/* Dedicated Task Tracking View with Amazon-style shipping details & Zigzag Timeline */}
+          {activeTab === 'taskTracking' && (
+            <TaskTrackingView
+              selectedTaskId={selectedTaskId}
+              onSelectTask={(id) => setSelectedTaskId(id)}
+              onBackToDashboard={() => setActiveTab('dashboard')}
+            />
+          )}
+
+          {/* NOTE: Document Guide is hidden per user request; kept commented for future activation */}
+          {/*
           {activeTab === 'documentGuide' && (
             <DocumentGuideView
               selectedCity={selectedCity}
               onOpenVoiceModal={() => setIsVoiceModalOpen(true)}
             />
           )}
+          */}
 
           {activeTab === 'newSchemes' && (
             <NewSchemesView selectedCity={selectedCity} />
@@ -149,12 +179,15 @@ export default function App() {
             />
           )}
 
+          {/* NOTE: Jurisdiction page is hidden per user request; kept commented for future activation */}
+          {/*
           {activeTab === 'jurisdiction' && (
             <JurisdictionView
               selectedCity={selectedCity}
               setSelectedCity={setSelectedCity}
             />
           )}
+          */}
 
           {activeTab === 'settings' && (
             <div className="bg-white rounded-2xl p-8 border border-slate-200 text-center max-w-xl mx-auto shadow-card mt-8">

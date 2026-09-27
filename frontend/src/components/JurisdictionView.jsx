@@ -28,15 +28,8 @@ export default function JurisdictionView({ selectedCity, setSelectedCity }) {
 
   return (
     <div className="space-y-8">
-      {/* Top Engine Banner */}
+      {/* Top Banner */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest font-mono">
-            LIVE ENGINE • NAGRIK MARG DAG GRAPH CORE v2.4 • Deterministic Legal Traversal
-          </span>
-        </div>
-
         <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mb-2">
           Jurisdiction & Profile Sensitivity Engine
         </h1>
@@ -250,92 +243,92 @@ export default function JurisdictionView({ selectedCity, setSelectedCity }) {
           </div>
         </div>
 
-        {/* Right Column (4 cols): State Machine Core Dark Card */}
-        <div className="lg:col-span-4 bg-[#111827] text-white rounded-2xl p-5 border border-slate-800 shadow-xl space-y-4">
+        {/* Right Column (4 cols): Dependency Engine Card */}
+        <div className="lg:col-span-4 bg-white text-slate-800 rounded-2xl p-5 border border-slate-200/90 shadow-card space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest font-mono">
-              STATE MACHINE CORE
+            <span className="text-xs font-semibold text-slate-500">
+              Dependency Rule Engine
             </span>
-            <span className="text-[9px] font-bold text-blue-400 bg-blue-950 border border-blue-800 px-1.5 py-0.2 rounded font-mono">
-              RE-EVAL #102
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
+              Online
             </span>
           </div>
 
-          <h3 className="text-base font-bold text-white tracking-tight">
+          <h3 className="text-base font-bold text-slate-900 tracking-tight">
             Graph Re-evaluation Engine
           </h3>
-          <p className="text-xs text-slate-400 leading-relaxed">
+          <p className="text-xs text-slate-500 leading-relaxed">
             Guarantees deterministic dependency order. Recalculates DAG nodes in &lt;14ms whenever municipal jurisdiction or applicant profile pivots.
           </p>
 
           {/* Visual Topology Diagram */}
-          <div className="bg-[#0B111E] rounded-xl p-4 border border-slate-800/80 my-3">
-            <div className="text-[9px] font-mono text-slate-400 uppercase tracking-wider mb-2 flex items-center justify-between">
+          <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 my-3">
+            <div className="text-[9px] font-mono text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
               <span>DAG TRAVERSAL: TOPOLINE</span>
-              <span className="text-emerald-400">OPTIMAL</span>
+              <span className="text-emerald-700 font-bold">OPTIMAL</span>
             </div>
 
             {/* Simulated Node graph */}
             <div className="flex items-center justify-between py-3 px-2 relative">
-              <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-0.5 bg-slate-800 -z-0">
+              <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-0.5 bg-slate-200 -z-0">
                 <div className={`h-full bg-emerald-500 transition-all duration-700 ${simulatingReeval ? 'w-full' : 'w-3/4'}`}></div>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#0B111E] flex items-center justify-center text-[8px] font-bold">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white shadow-sm">
                   ✓
                 </div>
-                <span className="text-[8px] text-slate-400 mt-1 font-mono">Jurisdiction</span>
+                <span className="text-[8px] text-slate-500 mt-1 font-mono">Jurisdiction</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#0B111E] flex items-center justify-center text-[8px] font-bold">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white shadow-sm">
                   ✓
                 </div>
-                <span className="text-[8px] text-slate-400 mt-1 font-mono">Profile</span>
+                <span className="text-[8px] text-slate-500 mt-1 font-mono">Profile</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#0B111E] flex items-center justify-center text-[8px] font-bold">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white shadow-sm">
                   ✓
                 </div>
-                <span className="text-[8px] text-slate-400 mt-1 font-mono">Bylaws</span>
+                <span className="text-[8px] text-slate-500 mt-1 font-mono">Bylaws</span>
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-5 h-5 rounded-full bg-amber-500 border-2 border-[#0B111E] flex items-center justify-center text-[8px] font-bold">
+                <div className="w-5 h-5 rounded-full bg-amber-500 border-2 border-white flex items-center justify-center text-[8px] font-bold text-white shadow-sm">
                   ●
                 </div>
-                <span className="text-[8px] text-slate-400 mt-1 font-mono">Dispatch Node</span>
+                <span className="text-[8px] text-slate-500 mt-1 font-mono">Dispatch Node</span>
               </div>
             </div>
           </div>
 
           {/* Metrics Table */}
-          <div className="space-y-2 text-xs divide-y divide-slate-800 pt-1">
+          <div className="space-y-2 text-xs divide-y divide-slate-100 pt-1">
             <div className="flex items-center justify-between pt-1">
-              <span className="text-slate-400 text-[11px]">Active Prerequisite Nodes</span>
-              <span className="font-bold text-white font-mono">7 Active</span>
+              <span className="text-slate-500 text-[11px]">Active Prerequisite Nodes</span>
+              <span className="font-bold text-slate-900 font-mono">7 Active</span>
             </div>
             <div className="flex items-center justify-between pt-2">
-              <span className="text-slate-400 text-[11px]">Cyclic Dependency Check</span>
-              <span className="font-bold text-emerald-400 font-mono">0 cycles (Optimal)</span>
+              <span className="text-slate-500 text-[11px]">Cyclic Dependency Check</span>
+              <span className="font-bold text-emerald-700 font-mono">0 cycles (Optimal)</span>
             </div>
             <div className="flex items-center justify-between pt-2">
-              <span className="text-slate-400 text-[11px]">Verification Protocol</span>
-              <span className="font-bold text-slate-200 font-mono">Aadhaar Bio-Auth</span>
+              <span className="text-slate-500 text-[11px]">Verification Protocol</span>
+              <span className="font-bold text-slate-800 font-mono">Aadhaar Bio-Auth</span>
             </div>
           </div>
 
           <button
             onClick={handleTestReeval}
             disabled={simulatingReeval}
-            className="w-full py-2.5 px-3 bg-terracotta hover:bg-terracotta-hover text-white rounded-xl text-xs font-bold transition-all mt-4 flex items-center justify-center gap-1.5 shadow-sm"
+            className="w-full py-2.5 px-3 bg-terracotta hover:bg-terracotta-hover text-white rounded-xl text-xs font-bold transition-all mt-4 flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
           >
             <GitBranch className={`w-3.5 h-3.5 ${simulatingReeval ? 'animate-spin' : ''}`} />
             <span>{simulatingReeval ? 'Traversing Graph Nodes...' : 'Test Re-evaluation Routine'}</span>
           </button>
-          <div className="text-[10px] text-slate-500 text-center">
+          <div className="text-[10px] text-slate-400 text-center">
             Simulates dynamic topology update in real-time
           </div>
         </div>

@@ -27,8 +27,11 @@ pnpm-debug.log*
 !.vscode/extensions.json
 .idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Private presentations & study notes
+*.pdf
+*cheat_sheet*
+*study_guide*
+generate_guide.py
+private/
+scripts/
+

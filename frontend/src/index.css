@@ -24,3 +24,68 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Custom interactive animations */
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftToRightFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDownFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-left-to-right {
+  animation: slideLeftToRightFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Smooth accordion & dropdown collapse animations */
+.dropdown-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+}
+
+.dropdown-collapse.open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.dropdown-collapse-inner {
+  overflow: hidden;
+}
+
+@keyframes dropdownItemSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-item {
+  animation: dropdownItemSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+

@@ -107,7 +107,7 @@ export default function ActionChecklist({ onInspectDocument }) {
         {/* Generate Dossier Button */}
         <button
           onClick={() => onInspectDocument('Generated Physical Dossier Bundle')}
-          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-[#111827] hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-md transition-all active:scale-[0.98]"
+          className="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-terracotta hover:bg-terracotta-hover text-white font-bold text-xs rounded-xl shadow-soft-sm transition-all active:scale-[0.98] cursor-pointer"
         >
           <FileText className="w-3.5 h-3.5" />
           <span>Generate Document Dossier Bundle</span>

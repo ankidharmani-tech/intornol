@@ -80,13 +80,8 @@ export default function AdminQueueView({ onApproveItem }) {
       <div className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
         <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-rose-500"></span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest font-mono">
-              HITL INGESTION V2.4 • LIVE GRAPH STREAM
-            </span>
-            <span className="text-slate-300">•</span>
-            <span className="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded font-mono">
-              DAG Pipeline: Active
+            <span className="text-xs font-semibold text-slate-500">
+              Government Gazette Review & Verification Queue
             </span>
           </div>
 

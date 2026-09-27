@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   LayoutDashboard, 
-  FileCheck, 
   Sparkles, 
   CheckSquare, 
   Landmark, 
@@ -9,18 +8,38 @@ import {
   Send, 
   Clock, 
   MoreVertical,
-  UserCheck
+  ListTodo,
+  ChevronDown,
+  ChevronRight,
+  CheckCircle2,
+  Hourglass,
+  Calendar
 } from 'lucide-react';
+import { TASKS_DATA } from '../data/mockData';
 
-export default function Sidebar({ activeTab, setActiveTab, onOpenDailyReport, pendingCount = 14 }) {
-  const navItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, badge: null },
-    { id: 'documentGuide', label: 'Document Guide', icon: FileCheck, badge: '4 Ready', badgeColor: 'bg-blue-50 text-blue-700 border-blue-200' },
-    { id: 'newSchemes', label: 'New Schemes', icon: Sparkles, badge: 'New', badgeColor: 'bg-rose-100 text-rose-700 border-rose-200' },
-    { id: 'adminQueue', label: 'Admin Queue', icon: CheckSquare, badge: `${pendingCount}`, badgeColor: 'bg-slate-100 text-slate-700 border-slate-200' },
-    { id: 'jurisdiction', label: 'Jurisdiction', icon: Landmark, badge: null },
-    { id: 'settings', label: 'Settings', icon: Settings, badge: null },
-  ];
+export default function Sidebar({ 
+  activeTab, 
+  setActiveTab, 
+  onOpenDailyReport, 
+  pendingCount = 14,
+  selectedTaskId,
+  onSelectTask 
+}) {
+  const [isTasksOpen, setIsTasksOpen] = useState(true);
+  const [isOngoingOpen, setIsOngoingOpen] = useState(true);
+  const [isUpcomingOpen, setIsUpcomingOpen] = useState(false);
+  const [isCompletedOpen, setIsCompletedOpen] = useState(false);
+
+  const ongoingCount = TASKS_DATA.ongoing.length;
+  const upcomingCount = TASKS_DATA.upcoming.length;
+  const completedCount = TASKS_DATA.completed.length;
+
+  const handleTaskClick = (taskId) => {
+    if (onSelectTask) {
+      onSelectTask(taskId);
+    }
+    setActiveTab('taskTracking');
+  };
 
   return (
     <aside className="w-64 bg-white border-r border-slate-200/90 flex flex-col justify-between shrink-0 h-screen sticky top-0 p-4 select-none z-40">
@@ -46,32 +65,251 @@ export default function Sidebar({ activeTab, setActiveTab, onOpenDailyReport, pe
         </div>
 
         {/* Navigation Menu */}
-        <nav className="space-y-1 overflow-y-auto pr-1">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
-                  isActive
-                    ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-slate-900' : 'text-slate-400'}`} />
-                  <span>{item.label}</span>
+        <nav className="space-y-1 overflow-y-auto pr-1 flex-1">
+          {/* Dashboard Tab */}
+          <button
+            onClick={() => setActiveTab('dashboard')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+              activeTab === 'dashboard'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <LayoutDashboard className={`w-4 h-4 ${activeTab === 'dashboard' ? 'text-slate-900' : 'text-slate-400'}`} />
+              <span>Dashboard</span>
+            </div>
+          </button>
+
+          {/* Tasks Accordion Group */}
+          <div className="pt-1">
+            <button
+              onClick={() => setIsTasksOpen(!isTasksOpen)}
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+                activeTab === 'taskTracking'
+                  ? 'bg-slate-100 text-slate-900 font-bold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-50'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <ListTodo className="w-4 h-4 text-terracotta" />
+                <span>Tasks</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600 font-mono">
+                  {ongoingCount + upcomingCount}
+                </span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${isTasksOpen ? 'rotate-180' : ''}`} />
+              </div>
+            </button>
+
+            {/* Tasks Subcategories Accordion with Smooth Dropdown Animation */}
+            <div className={`dropdown-collapse ${isTasksOpen ? 'open' : ''}`}>
+              <div className="dropdown-collapse-inner pl-3 pr-1 pt-1 space-y-1">
+                {/* 1. Ongoing Tasks Group */}
+                <div>
+                  <button
+                    onClick={() => setIsOngoingOpen(!isOngoingOpen)}
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                      <span>Ongoing</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-mono">
+                        {ongoingCount}
+                      </span>
+                      <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${isOngoingOpen ? 'rotate-180' : ''}`} />
+                    </div>
+                  </button>
+
+                  {/* Ongoing Tasks Dropdown List with Smooth Height Transition */}
+                  <div className={`dropdown-collapse ${isOngoingOpen ? 'open' : ''}`}>
+                    <div className="dropdown-collapse-inner pl-4 pr-1 py-1 space-y-0.5">
+                      {TASKS_DATA.ongoing.map((task, idx) => {
+                        const isTaskSelected = activeTab === 'taskTracking' && selectedTaskId === task.id;
+                        return (
+                          <button
+                            key={task.id}
+                            onClick={() => handleTaskClick(task.id)}
+                            style={{ animationDelay: `${idx * 40}ms` }}
+                            className={`w-full text-left px-2.5 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-150 leading-tight flex items-center justify-between gap-1.5 cursor-pointer ${
+                              isTaskSelected
+                                ? 'bg-[#dce9f4] text-slate-900 font-bold border-l-2 border-slate-800 pl-2 shadow-soft-sm'
+                                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 hover:translate-x-0.5'
+                            }`}
+                          >
+                            <span className="truncate">{task.shortTitle}</span>
+                            <span className="text-[9px] font-mono text-slate-400 shrink-0">{task.progress}%</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-                {item.badge && (
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeColor || 'bg-slate-100 text-slate-600'}`}>
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            );
-          })}
+
+                {/* 2. Upcoming Tasks Group */}
+                <div>
+                  <button
+                    onClick={() => setIsUpcomingOpen(!isUpcomingOpen)}
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                      <span>Upcoming</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-mono">
+                        {upcomingCount}
+                      </span>
+                      <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${isUpcomingOpen ? 'rotate-180' : ''}`} />
+                    </div>
+                  </button>
+
+                  {/* Upcoming Tasks Dropdown List with Smooth Height Transition */}
+                  <div className={`dropdown-collapse ${isUpcomingOpen ? 'open' : ''}`}>
+                    <div className="dropdown-collapse-inner pl-4 pr-1 py-1 space-y-0.5">
+                      {TASKS_DATA.upcoming.map((task, idx) => {
+                        const isTaskSelected = activeTab === 'taskTracking' && selectedTaskId === task.id;
+                        return (
+                          <button
+                            key={task.id}
+                            onClick={() => handleTaskClick(task.id)}
+                            style={{ animationDelay: `${idx * 40}ms` }}
+                            className={`w-full text-left px-2.5 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-150 leading-tight flex items-center justify-between gap-1.5 cursor-pointer ${
+                              isTaskSelected
+                                ? 'bg-[#dce9f4] text-slate-900 font-bold border-l-2 border-slate-800 pl-2 shadow-soft-sm'
+                                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 hover:translate-x-0.5'
+                            }`}
+                          >
+                            <span className="truncate">{task.shortTitle}</span>
+                            <span className="text-[9px] font-mono text-slate-400 shrink-0">Queued</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Completed Tasks Group */}
+                <div>
+                  <button
+                    onClick={() => setIsCompletedOpen(!isCompletedOpen)}
+                    className="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-100/70 transition-all cursor-pointer"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      <span>Completed</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-mono">
+                        {completedCount}
+                      </span>
+                      <ChevronDown className={`w-3 h-3 text-slate-400 transition-transform duration-200 ${isCompletedOpen ? 'rotate-180' : ''}`} />
+                    </div>
+                  </button>
+
+                  {/* Completed Tasks Dropdown List with Smooth Height Transition */}
+                  <div className={`dropdown-collapse ${isCompletedOpen ? 'open' : ''}`}>
+                    <div className="dropdown-collapse-inner pl-4 pr-1 py-1 space-y-0.5">
+                      {TASKS_DATA.completed.map((task, idx) => {
+                        const isTaskSelected = activeTab === 'taskTracking' && selectedTaskId === task.id;
+                        return (
+                          <button
+                            key={task.id}
+                            onClick={() => handleTaskClick(task.id)}
+                            style={{ animationDelay: `${idx * 40}ms` }}
+                            className={`w-full text-left px-2.5 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-150 leading-tight flex items-center justify-between gap-1.5 cursor-pointer ${
+                              isTaskSelected
+                                ? 'bg-[#dce9f4] text-slate-900 font-bold border-l-2 border-slate-800 pl-2 shadow-soft-sm'
+                                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 hover:translate-x-0.5'
+                            }`}
+                          >
+                            <span className="truncate">{task.shortTitle}</span>
+                            <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* New Schemes */}
+          <button
+            onClick={() => setActiveTab('newSchemes')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+              activeTab === 'newSchemes'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Sparkles className={`w-4 h-4 ${activeTab === 'newSchemes' ? 'text-slate-900' : 'text-slate-400'}`} />
+              <span>New Schemes</span>
+            </div>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-rose-100 text-rose-700 border-rose-200">
+              New
+            </span>
+          </button>
+
+          {/* Admin Queue */}
+          <button
+            onClick={() => setActiveTab('adminQueue')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+              activeTab === 'adminQueue'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <CheckSquare className={`w-4 h-4 ${activeTab === 'adminQueue' ? 'text-slate-900' : 'text-slate-400'}`} />
+              <span>Admin Queue</span>
+            </div>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full border bg-slate-100 text-slate-700 border-slate-200 font-mono">
+              {pendingCount}
+            </span>
+          </button>
+
+          {/* NOTE: Document Guide is removed per user request:
+            "remove document guide as right now it looks like u have just one task ongoing and thats why u have durect tab for doc guide"
+            {/*
+            <button
+              onClick={() => setActiveTab('documentGuide')}
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
+            >
+              ...
+            </button>
+            */}
+
+          {/* NOTE: Jurisdiction page is commented out per user request:
+            "and remove jurisdiction page, means dont remove permanantly, its just that, if we want we will put it, so comment it for now.."
+            {/*
+            <button
+              onClick={() => setActiveTab('jurisdiction')}
+              className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ...`}
+            >
+              ...
+            </button>
+            */}
+
+          {/* Settings */}
+          <button
+            onClick={() => setActiveTab('settings')}
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-150 ${
+              activeTab === 'settings'
+                ? 'bg-[#dce9f4] text-slate-900 shadow-soft-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+            }`}
+          >
+            <div className="flex items-center gap-2.5">
+              <Settings className={`w-4 h-4 ${activeTab === 'settings' ? 'text-slate-900' : 'text-slate-400'}`} />
+              <span>Settings</span>
+            </div>
+          </button>
         </nav>
       </div>
 
