@@ -484,6 +484,144 @@ export const TASKS_DATA = {
           docsRequired: ['All preceding stamped receipts', 'Signed Token Clearance Slip'],
           verificationRemarks: 'Direct delivery to residential address and downloadable from citizen dashboard.'
         }
+      ],
+      documentsGuide: [
+        {
+          id: 'doc_aadhaar',
+          title: 'Aadhaar Card (UIDAI)',
+          category: 'Identity & Citizenship Proof',
+          specimenImage: '/docs/aadhar-card.jpeg',
+          authority: 'Unique Identification Authority of India (UIDAI)',
+          portalUrl: 'https://myaadhaar.uidai.gov.in',
+          copies: 'Original for spot biometric / QR scan + 2 self-attested photocopies',
+          keyPoints: [
+            'Name spelling must match electricity bill & PAN exactly without abbreviations',
+            'Linked mobile number must be active for instantaneous OTP verification',
+            'QR code on card or e-Aadhaar printout must scan cleanly at ward scanner'
+          ],
+          deskVerificationChecklist: 'Clerk checks watermark, 12-digit UID format, and cross-checks address against municipal ward database.',
+          rejectionReason: 'Blurry printed QR code or mismatch in expanded middle name (e.g. initial "M." vs "Mohan").',
+          validity: 'Perpetual / Unexpired'
+        },
+        {
+          id: 'doc_pan',
+          title: 'Permanent Account Number (PAN) Card',
+          category: 'Financial & Tax Identification',
+          specimenImage: '/docs/pan-card.avif',
+          authority: 'Income Tax Department, Government of India',
+          portalUrl: 'https://www.incometax.gov.in',
+          copies: 'Original physical card + 1 self-attested photocopy',
+          keyPoints: [
+            'Mandatory for commercial account settlement and municipal tax record mapping',
+            '10-digit alphanumeric PAN must be active and linked to Aadhaar',
+            'Signature strip on card must be legible and crisp'
+          ],
+          deskVerificationChecklist: 'Ward desk officer confirms active status on NSDL/UTI database and verifies signature against application Form A.',
+          rejectionReason: 'Unlinked PAN-Aadhaar status or illegible signature on older plastic cards.',
+          validity: 'Lifetime validity'
+        },
+        {
+          id: 'doc_electric',
+          title: 'MSEDCL / Utility Electricity Bill',
+          category: 'Premises Ownership & Address Proof',
+          specimenImage: '/docs/electric-bill.webp',
+          authority: 'Maharashtra State Electricity Distribution Co. (MSEDCL)',
+          portalUrl: 'https://www.mahadiscom.in',
+          copies: 'Latest paid electricity bill (< 60 days old) + receipt of payment',
+          keyPoints: [
+            'Consumer Account No. (CA Number), billing unit (BU), and flat address must state residential tariff (LT-I)',
+            'Bill must show zero overdue arrears and reflect timely settlement',
+            'Premises address must be identical to applicant kitchen location'
+          ],
+          deskVerificationChecklist: 'Desk checks billing month is within last 90 days, payment barcode scans as settled, and address zone matches TMC Naupada Ward #4.',
+          rejectionReason: 'Bill older than 90 days or overdue unpaid disconnection notice printed on bill footer.',
+          validity: 'Must be issued within last 60 days'
+        },
+        {
+          id: 'doc_rent_agreement',
+          title: 'Registered Leave & License Agreement',
+          category: 'Tenancy & Legal Occupancy Proof',
+          specimenImage: '/docs/rent-agreement-specimen.jpg',
+          authority: 'Inspector General of Registration & Stamps (IGR Maharashtra)',
+          portalUrl: 'https://igrmaharashtra.gov.in',
+          copies: 'Original registered booklet with Government e-Stamp + 1 complete set',
+          keyPoints: [
+            'Must be compulsorily registered under Sec 55 of Maharashtra Rent Control Act 1999',
+            'Executed on valid Maharashtra e-stamp duty with government GRAS challan reference',
+            'Clause 7 must explicitly permit domestic packaged food / kitchen preparation'
+          ],
+          deskVerificationChecklist: 'Officer checks government registration stamp, biometric verification seal of Licensor & Licensee, and unexpired validity.',
+          rejectionReason: 'Notarized agreement on plain ₹100 stamp paper (TMC strictly mandates IGR Registered agreement, not notary).',
+          validity: 'Valid throughout stated tenure (11 to 36 months)'
+        },
+        {
+          id: 'doc_society_noc',
+          title: 'Housing Society No Objection Certificate (NOC)',
+          category: 'Residential Ward Clearance',
+          specimenImage: '/docs/society-noc-specimen.png',
+          authority: 'Registered Co-Operative Housing Society (CHS) Managing Committee',
+          portalUrl: 'https://sahakarayukta.maharashtra.gov.in',
+          copies: 'Original NOC on official Society letterhead with Secretary & Chairman signatures and round rubber stamp',
+          keyPoints: [
+            'Must state society registration number, flat number, and Managing Committee resolution date',
+            'Explicit clearance for domestic culinary preparation without commercial nuisance or public footfall',
+            'Confirmation of zero outstanding maintenance dues'
+          ],
+          deskVerificationChecklist: 'Ward Inspector verifies circular society seal, signature of office bearers, and flat number.',
+          rejectionReason: 'Informal letter missing official registered society seal or signed by only one office bearer.',
+          validity: 'Valid for 6 months from date of issuance'
+        },
+        {
+          id: 'doc_fssai_cert',
+          title: 'Central FSSAI Registration Certificate (Form A)',
+          category: 'Food Safety & Standards Compliance',
+          specimenImage: '/docs/fssai-license-specimen.jpg',
+          authority: 'Food Safety and Standards Authority of India (FoSCoS Portal)',
+          portalUrl: 'https://foscos.fssai.gov.in',
+          copies: 'Color printout of 14-digit FoSCoS Certificate with scannable QR code',
+          keyPoints: [
+            'Issued under FSSAI Petty FBO norms for annual turnover under ₹12 Lakhs',
+            'Must display 14-digit central license number and validity period',
+            'Kitchen address on FSSAI certificate must match TMC Ward application exactly'
+          ],
+          deskVerificationChecklist: 'Ward Food Safety Officer scans QR code to verify live FoSCoS registration and confirms category code 16 / 15.',
+          rejectionReason: 'Expired validity date or mismatch between owner legal name and FoSCoS certificate.',
+          validity: '1 to 5 years (as selected during online payment)'
+        },
+        {
+          id: 'doc_passport_photo',
+          title: 'Biometric Passport Size Photographs (35mm x 45mm)',
+          category: 'Applicant Identity Specimen',
+          specimenImage: '/docs/passport-photo-specimen.jpg',
+          authority: 'ICAO Biometric Standard / Passport Seva Format',
+          portalUrl: 'https://www.passportindia.gov.in',
+          copies: '3 physical glossy photographs + digital scan',
+          keyPoints: [
+            'Standard 35mm x 45mm dimensions with 75% face coverage',
+            'Plain white background without shadows, patterns, or borders',
+            'Neutral facial expression with both ears visible and no tinted glasses'
+          ],
+          deskVerificationChecklist: 'One photo pasted on ward physical ledger, one attached to Trade Permit, one archived in health records.',
+          rejectionReason: 'Casual selfies, dark colored backgrounds, or photos with face covered or shadowed.',
+          validity: 'Taken within last 6 months'
+        },
+        {
+          id: 'doc_property_tax',
+          title: 'TMC Municipal Property Tax Paid E-Challan',
+          category: 'Municipal Assessment Proof',
+          specimenImage: '/docs/property-tax-receipt-specimen.png',
+          authority: 'Thane Municipal Corporation Assessment & Property Tax Dept',
+          portalUrl: 'https://propertytax.thanecity.gov.in',
+          copies: 'Original e-Receipt printout with UPIC Assessment code',
+          keyPoints: [
+            'Verifies that the building/premises is legally assessed by TMC without unauthorized construction flags',
+            'Shows property usage as residential flat (Rateable value assessed)',
+            'Reflects current year tax paid with zero municipal dues'
+          ],
+          deskVerificationChecklist: 'Desk clerk verifies UPIC code (04-NAUP-00402-B) on TMC live tax database.',
+          rejectionReason: 'Outstanding municipal property tax arrears or unauthorized floor penalty flags.',
+          validity: 'Current financial year (2026-2027)'
+        }
       ]
     },
     {
@@ -561,6 +699,72 @@ export const TASKS_DATA = {
           mandate: 'RTS Act Mandated 30 Days',
           docsRequired: ['25-Year Interconnection Agreement', 'Work Completion Certificate'],
           verificationRemarks: 'First generation bill will reflect export credit units.'
+        }
+      ],
+      documentsGuide: [
+        {
+          id: 'doc_msedcl_bill',
+          title: 'Latest Paid MSEDCL Electricity Bill',
+          category: 'Consumer Connection Verification',
+          specimenImage: '/docs/electric-bill.webp',
+          authority: 'MSEDCL Thane Urban Circle',
+          portalUrl: 'https://www.mahadiscom.in',
+          copies: 'Original digital copy + 2 photocopies',
+          keyPoints: [
+            'Consumer number, Billing Unit (BU), and Sanctioned Load (kW) must be clearly printed',
+            'Must show zero arrears to qualify for reverse metering credit settlement'
+          ],
+          deskVerificationChecklist: 'Sub-divisional Engineer verifies transformer capacity and active meter sanction.',
+          rejectionReason: 'Overdue bill balance or disconnected account status.',
+          validity: 'Issued within last 30 days'
+        },
+        {
+          id: 'doc_prop_tax_solar',
+          title: 'Municipal Property Tax Assessment Challan',
+          category: 'Roof & Building Ownership Proof',
+          specimenImage: '/docs/property-tax-receipt-specimen.png',
+          authority: 'Thane Municipal Corporation',
+          portalUrl: 'https://propertytax.thanecity.gov.in',
+          copies: 'Paid e-Challan copy showing current financial year',
+          keyPoints: [
+            'Proves roof rights and legal ownership of building structure',
+            'UPIC property assessment number must match installation address'
+          ],
+          deskVerificationChecklist: 'Verifies applicant has clear title to erect rooftop solar mounting structures.',
+          rejectionReason: 'Unassessed unauthorized structure or property tax default.',
+          validity: 'Current assessment year'
+        },
+        {
+          id: 'doc_society_noc_solar',
+          title: 'Housing Society Rooftop Access NOC',
+          category: 'Common Terrace Rights',
+          specimenImage: '/docs/society-noc-specimen.png',
+          authority: 'Housing Society Managing Committee',
+          portalUrl: 'https://sahakarayukta.maharashtra.gov.in',
+          copies: 'Original stamped NOC on Society Letterhead',
+          keyPoints: [
+            'Confirms society permission to lay DC cabling and install solar panels on terrace',
+            'Must cite Managing Committee Special General Body resolution number'
+          ],
+          deskVerificationChecklist: 'Inspected by MSEDCL field safety inspector prior to meter commissioning.',
+          rejectionReason: 'Absence of General Body resolution or disputed terrace rights.',
+          validity: '6 months from issuance'
+        },
+        {
+          id: 'doc_aadhaar_solar',
+          title: 'Applicant Aadhaar Card',
+          category: 'Identity Proof',
+          specimenImage: '/docs/aadhar-card.jpeg',
+          authority: 'UIDAI',
+          portalUrl: 'https://myaadhaar.uidai.gov.in',
+          copies: 'Self-attested photocopy + e-Aadhaar QR check',
+          keyPoints: [
+            'Name must match electricity connection consumer name',
+            'Required for DBT Central PM Surya Ghar subsidy disbursement'
+          ],
+          deskVerificationChecklist: 'Aadhaar seed verification with bank account for direct subsidy credit.',
+          rejectionReason: 'Bank account not mapped to Aadhaar NPCI mapper.',
+          validity: 'Perpetual'
         }
       ]
     }
