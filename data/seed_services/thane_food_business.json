@@ -1,0 +1,223 @@
+{
+  "task": "home_food_business",
+  "city": "Thane",
+  "state": "Maharashtra",
+  "services": [
+    {
+      "id": "svc_aadhaar_identity",
+      "name": "Aadhaar Card",
+      "citizen_friendly_label": "Government photo ID (Aadhaar) — you probably already have this",
+      "category": "identity",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": [],
+      "fee": 0,
+      "processing_days": 0,
+      "official_source_url": "https://uidai.gov.in/",
+      "office_name": null,
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.99,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Must be an Indian resident",
+        "Any age"
+      ],
+      "application_url": "https://uidai.gov.in/"
+    },
+    {
+      "id": "svc_address_proof",
+      "name": "Address Proof Document",
+      "citizen_friendly_label": "Proof that you live or run business at this address",
+      "category": "identity",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "offline",
+      "documents_required": ["doc_electricity_bill", "doc_rent_agreement"],
+      "fee": 0,
+      "processing_days": 0,
+      "official_source_url": "https://services.india.gov.in/",
+      "office_name": null,
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.95,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Valid electricity bill or rent agreement for the premises"
+      ],
+      "application_url": ""
+    },
+    {
+      "id": "svc_fssai_basic_reg",
+      "name": "FSSAI Basic Registration",
+      "citizen_friendly_label": "Food safety registration (small business, turnover under ₹12 lakh)",
+      "category": "food_business",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": ["doc_aadhaar", "doc_address_proof", "doc_passport_photo"],
+      "fee": 100,
+      "processing_days": 7,
+      "official_source_url": "https://foscos.fssai.gov.in/",
+      "office_name": "Food Safety and Standards Authority of India",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.92,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Annual turnover up to ₹12 lakh",
+        "Small-scale food manufacturing, storage, or distribution",
+        "Applicable for home-based food businesses"
+      ],
+      "application_url": "https://foscos.fssai.gov.in/"
+    },
+    {
+      "id": "svc_udyam_registration",
+      "name": "Udyam (MSME) Registration",
+      "citizen_friendly_label": "Register as a micro/small enterprise — free, gives you government scheme access",
+      "category": "food_business",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": ["doc_aadhaar", "doc_pan_card"],
+      "fee": 0,
+      "processing_days": 1,
+      "official_source_url": "https://udyamregistration.gov.in/",
+      "office_name": "Ministry of MSME",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.94,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Any Indian citizen starting a micro, small, or medium enterprise",
+        "Based on Aadhaar verification",
+        "Investment in plant/machinery up to ₹1 crore for micro enterprise"
+      ],
+      "application_url": "https://udyamregistration.gov.in/"
+    },
+    {
+      "id": "svc_shop_establishment_maha",
+      "name": "Shop & Establishment Registration (Maharashtra)",
+      "citizen_friendly_label": "State-level registration for your business premises",
+      "category": "food_business",
+      "jurisdiction_level": "state",
+      "applicable_region": "Maharashtra",
+      "mode": "online",
+      "documents_required": ["doc_aadhaar", "doc_address_proof", "doc_pan_card"],
+      "fee": 200,
+      "processing_days": 7,
+      "official_source_url": "https://aaplesarkar.mahaonline.gov.in/",
+      "office_name": "Labour Department, Maharashtra",
+      "office_address": null,
+      "contact_designation": "Inspector, Shop & Establishment",
+      "confidence": 0.88,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Business operating within Maharashtra",
+        "Must register within 30 days of starting business"
+      ],
+      "application_url": "https://aaplesarkar.mahaonline.gov.in/"
+    },
+    {
+      "id": "svc_trade_license_thane",
+      "name": "Trade License — Thane Municipal Corporation",
+      "citizen_friendly_label": "Permission to run your business from this address (Thane city)",
+      "category": "food_business",
+      "jurisdiction_level": "municipal",
+      "applicable_region": "Thane",
+      "mode": "hybrid",
+      "documents_required": ["doc_aadhaar", "doc_address_proof", "doc_shop_photo", "doc_rent_agreement"],
+      "fee": 500,
+      "processing_days": 15,
+      "official_source_url": "https://thanecity.gov.in/",
+      "office_name": "Thane Municipal Corporation",
+      "office_address": "Thane Municipal Corporation, Pachpakhadi, Thane West 400602",
+      "contact_designation": "Public Information Officer, TMC",
+      "confidence": 0.87,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Business operating within Thane Municipal Corporation limits",
+        "Valid address proof for the business premises in Thane",
+        "Home-based business may require NOC from housing society"
+      ],
+      "application_url": "https://thanecity.gov.in/"
+    },
+    {
+      "id": "svc_gst_registration",
+      "name": "GST Registration",
+      "citizen_friendly_label": "Tax registration — required only if turnover exceeds ₹40 lakh (or ₹20 lakh for services)",
+      "category": "food_business",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": ["doc_aadhaar", "doc_pan_card", "doc_address_proof", "doc_bank_statement"],
+      "fee": 0,
+      "processing_days": 7,
+      "official_source_url": "https://www.gst.gov.in/",
+      "office_name": "Goods and Services Tax Network",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.90,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Mandatory if annual turnover exceeds ₹40 lakh (goods) or ₹20 lakh (services)",
+        "Voluntary registration allowed for smaller businesses",
+        "Requires PAN card"
+      ],
+      "application_url": "https://reg.gst.gov.in/registration/"
+    }
+  ],
+  "edges": [
+    { "source": "svc_aadhaar_identity", "target": "svc_fssai_basic_reg", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_address_proof", "target": "svc_fssai_basic_reg", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_aadhaar_identity", "target": "svc_address_proof", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_aadhaar_identity", "target": "svc_udyam_registration", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_fssai_basic_reg", "target": "svc_shop_establishment_maha", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_address_proof", "target": "svc_shop_establishment_maha", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_fssai_basic_reg", "target": "svc_trade_license_thane", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_address_proof", "target": "svc_trade_license_thane", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_shop_establishment_maha", "target": "svc_gst_registration", "edge_type": "PREREQUISITE_FOR" },
+    { "source": "svc_trade_license_thane", "target": "svc_gst_registration", "edge_type": "PREREQUISITE_FOR" }
+  ],
+  "clarifying_questions": [
+    {
+      "id": "q_premises",
+      "question": "Where will you prepare/store the food?",
+      "options": ["Home kitchen", "Rented commercial space", "Owned commercial space"],
+      "field": "business_premises"
+    },
+    {
+      "id": "q_ownership",
+      "question": "Do you own or rent your premises?",
+      "options": ["Owned", "Rented"],
+      "field": "ownership"
+    },
+    {
+      "id": "q_food_type",
+      "question": "What type of food product?",
+      "options": ["Packaged snacks", "Cooked meals / tiffin", "Bakery items", "Beverages", "Other"],
+      "field": "food_type"
+    },
+    {
+      "id": "q_turnover",
+      "question": "Expected annual turnover?",
+      "options": ["Under ₹12 lakh", "₹12 lakh – ₹20 lakh", "₹20 lakh – ₹1 crore", "Above ₹1 crore"],
+      "field": "annual_turnover_bracket"
+    }
+  ]
+}
