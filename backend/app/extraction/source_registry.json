@@ -1,0 +1,44 @@
+{
+  "sources": [
+    {
+      "id": "src_fssai_basic",
+      "url": "https://foscos.fssai.gov.in/",
+      "description": "FSSAI Basic Registration via FoSCoS portal",
+      "task": "food_business",
+      "region": null,
+      "jurisdiction_level": "central"
+    },
+    {
+      "id": "src_tmc_trade_license",
+      "url": "https://thanecity.gov.in/",
+      "description": "Thane Municipal Corporation trade license for home business",
+      "task": "food_business",
+      "region": "Thane",
+      "jurisdiction_level": "municipal"
+    },
+    {
+      "id": "src_maha_shop_est",
+      "url": "https://aaplesarkar.mahaonline.gov.in/",
+      "description": "Maharashtra Shop & Establishment registration via Aaple Sarkar",
+      "task": "food_business",
+      "region": "Maharashtra",
+      "jurisdiction_level": "state"
+    },
+    {
+      "id": "src_gst_registration",
+      "url": "https://www.gst.gov.in/",
+      "description": "GST Registration portal",
+      "task": "food_business",
+      "region": null,
+      "jurisdiction_level": "central"
+    },
+    {
+      "id": "src_udyam",
+      "url": "https://udyamregistration.gov.in/",
+      "description": "Udyam (MSME) Registration portal",
+      "task": "food_business",
+      "region": null,
+      "jurisdiction_level": "central"
+    }
+  ]
+}

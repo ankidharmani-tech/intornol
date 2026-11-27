@@ -1,0 +1,158 @@
+{
+  "task": "crawled_services",
+  "city": "Thane",
+  "state": "Maharashtra",
+  "services": [
+    {
+      "id": "crawled_fssai_india",
+      "name": "Food Business Operator License",
+      "citizen_friendly_label": "FSSAI License for Food Business",
+      "category": "food_business",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": [
+        "doc_aadhaar",
+        "doc_business_proof",
+        "doc_pan"
+      ],
+      "fee": 100,
+      "processing_days": 15,
+      "official_source_url": "https://services.india.gov.in/service/detail/fssai-license",
+      "office_name": "FSSAI Authority",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.95,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Must operate a food business",
+        "Turnover criteria depends on state vs central license"
+      ],
+      "application_url": "https://foscos.fssai.gov.in/"
+    },
+    {
+      "id": "crawled_tmc_trade",
+      "name": "Trade License / NOC",
+      "citizen_friendly_label": "TMC Trade License NOC",
+      "category": "business_registration",
+      "jurisdiction_level": "municipal",
+      "applicable_region": "Thane",
+      "mode": "hybrid",
+      "documents_required": [
+        "doc_property_tax_receipt",
+        "doc_aadhaar",
+        "doc_noc_society"
+      ],
+      "fee": 500,
+      "processing_days": 21,
+      "official_source_url": "https://thanecorporation.gov.in/tmc/TradeLicense",
+      "office_name": "Thane Municipal Corporation HQ",
+      "office_address": "Pachpakhadi, Thane",
+      "contact_designation": "Ward Officer",
+      "confidence": 0.9,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Business premises within Thane Municipal limits",
+        "Valid proof of ownership or rent agreement"
+      ],
+      "application_url": "https://thanecorporation.gov.in/"
+    },
+    {
+      "id": "crawled_tmc_water",
+      "name": "Commercial Water Connection",
+      "citizen_friendly_label": "Commercial Water Supply Connection",
+      "category": "utilities",
+      "jurisdiction_level": "municipal",
+      "applicable_region": "Thane",
+      "mode": "offline",
+      "documents_required": [
+        "doc_property_tax_receipt",
+        "doc_trade_license"
+      ],
+      "fee": 2000,
+      "processing_days": 14,
+      "official_source_url": "https://thanecorporation.gov.in/tmc/WaterDepartment",
+      "office_name": "TMC Water Department",
+      "office_address": "TMC Main Building",
+      "contact_designation": "Executive Engineer",
+      "confidence": 0.88,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Property tax cleared",
+        "Commercial property in TMC limits"
+      ],
+      "application_url": ""
+    },
+    {
+      "id": "crawled_india_msme",
+      "name": "MSME Udyam Registration",
+      "citizen_friendly_label": "Udyam MSME Certificate",
+      "category": "business_registration",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": [
+        "doc_aadhaar",
+        "doc_pan"
+      ],
+      "fee": 0,
+      "processing_days": 1,
+      "official_source_url": "https://services.india.gov.in/service/detail/udyam-registration",
+      "office_name": "Ministry of MSME",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.98,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Must be a micro, small, or medium enterprise",
+        "Aadhaar is mandatory for registration"
+      ],
+      "application_url": "https://udyamregistration.gov.in/"
+    },
+    {
+      "id": "crawled_india_pan",
+      "name": "Apply for New PAN Card",
+      "citizen_friendly_label": "PAN Card Application",
+      "category": "identity",
+      "jurisdiction_level": "central",
+      "applicable_region": null,
+      "mode": "online",
+      "documents_required": [
+        "doc_aadhaar",
+        "doc_address_proof",
+        "doc_dob_proof"
+      ],
+      "fee": 107,
+      "processing_days": 15,
+      "official_source_url": "https://services.india.gov.in/service/detail/apply-for-new-pan-card",
+      "office_name": "Income Tax Department",
+      "office_address": null,
+      "contact_designation": null,
+      "confidence": 0.97,
+      "status": "approved",
+      "date_added": "2026-09-27",
+      "version_history": [],
+      "eligibility_criteria": [
+        "Indian citizen or foreign citizen",
+        "Must not already possess a PAN"
+      ],
+      "application_url": "https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html"
+    }
+  ],
+  "edges": [
+    {
+      "source": "crawled_tmc_trade",
+      "target": "crawled_tmc_water",
+      "edge_type": "PREREQUISITE_FOR"
+    }
+  ],
+  "clarifying_questions": []
+}
